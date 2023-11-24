@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro'
+import BoardList from '../components/BoardList.astro'
+import Partners from '../components/Partners.astro'
+import Footer from '../components/Footer.astro'
+import Nav from '../components/Nav.astro'
+import BlockSurvey from '../components/BlockSurvey.astro'
+import PerspectiveContent from '../components/PerspectiveContent.astro'
+import Hero from '../components/Hero.astro'
+import OurGoalContent from '../components/OurGoalContent.astro'
+import IndustryLevelContent from '../components/IndustryLevelContent.astro'
+import DataNewGoldContent from '../components/DataNewGoldContent.astro'
+import ExploreDataContent from '../components/ExploreDataContent.astro'
+import Modal from '../components/Modal.astro'
+import KumuContent from '../components/KumuContent.astro'
+
+import 'animate.css'
+---
+
+<Layout title="Quo Vadis Web3">
+	<Nav />
+	<Hero />
+	<main>
+		<OurGoalContent />
+		<ExploreDataContent />
+		<KumuContent />
+		<IndustryLevelContent />
+		<DataNewGoldContent />
+		<PerspectiveContent />
+		<Partners />
+		<BoardList />
+	</main>
+	<Footer />
+	<Modal />
+	<BlockSurvey />
+</Layout>
+
+<style>
+	main {
+		width: 100vw;
+		overflow-x: hidden;
+	}
+</style>
+
+<script>
+	const animatingClassName = 'animate__animated'
+
+	const observerOptions = {
+		root: null,
+		/** @type {String} */
+		rootMargin: '0px',
+		/** @type {Number} */
+		threshold: 0.2,
+	}
+
+	function intersectionCallback(intersectingEntries) {
+		for (let j = 0; j < intersectingEntries.length; j++) {
+			if (
+				intersectingEntries[j].isIntersecting &&
+				intersectingEntries[j].intersectionRatio > observerOptions.threshold
+			) {
+				if (intersectingEntries[j].target && intersectingEntries[j].target.classList) {
+					var animationClassName = intersectingEntries[j].target.dataset.animationclass
+					intersectingEntries[j].target.classList.add(
+						animatingClassName,
+						animationClassName,
+					)
+				}
+			}
+		}
+	}
+
+	document.addEventListener('DOMContentLoaded', function () {
+		const observer = new IntersectionObserver(intersectionCallback, observerOptions)
+		const elementsAnimatedOnVisibility =
+			document.getElementsByClassName('animate--on-visibility')
+		for (let i = 0; i < elementsAnimatedOnVisibility.length; i++) {
+			observer.observe(elementsAnimatedOnVisibility[i])
+		}
+	})
+</script>

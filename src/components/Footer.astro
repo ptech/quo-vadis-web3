@@ -1,0 +1,62 @@
+---
+import footerContent from '../content/footer.json'
+---
+
+<footer class="flex flex-col p-6 text-white sm:p-16">
+	<div class="mb-12 flex w-full flex-1 flex-col gap-24 md:flex-row">
+		<div class="logo">
+			<img src="/logo/quovadis-logo.svg" />
+		</div>
+		<div class="flex flex-1 justify-between gap-4">
+			{
+				footerContent?.map((item) => (
+					<div>
+						<div class="mb-4 text-sm uppercase">{item.title}</div>
+						<ul>
+							{item?.links?.map((link) => (
+								<li>
+									{link.url ? (
+										<a href={link.url} target="_blank">
+											{link.name}
+										</a>
+									) : (
+										<span>{link.name}</span>
+									)}
+								</li>
+							))}
+						</ul>
+					</div>
+				))
+			}
+		</div>
+	</div>
+	<p class="w-full border-t border-gray-700 pt-8 text-center text-gray-400">
+		© <span id="year"></span> Quo Vadis WEB3, Inc. All rights reserved.
+	</p>
+</footer>
+
+<script>
+	document.getElementById('year').innerHTML = String(new Date().getFullYear())
+</script>
+
+<style>
+	footer {
+		min-height: var(--footer-height);
+	}
+
+	ul {
+		@apply text-gray-400;
+	}
+
+	li {
+		@apply mb-4;
+
+		a:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.logo {
+		min-width: 33%;
+	}
+</style>

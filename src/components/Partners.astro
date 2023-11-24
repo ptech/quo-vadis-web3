@@ -1,0 +1,36 @@
+---
+import PartnerList from './PartnerList.astro'
+
+const mainStr = 'Main'
+const goldStr = 'Gold'
+const institutionalStr = 'Institutional'
+---
+
+<div class="py-16 text-white sm:py-24">
+	<div class="mb-9 w-full text-center">
+		<h2
+			class="animate--on-visibility text-3xl font-bold tracking-tight sm:text-4xl"
+			data-animationclass="animate__slideInUp"
+		>
+			Our Partners
+		</h2>
+	</div>
+
+	<div class="animate--on-visibility" data-animationclass="animate__slideInLeft">
+		<PartnerList category={mainStr} />
+	</div>
+
+	<div class="animate--on-visibility" data-animationclass="animate__slideInRight">
+		<PartnerList category={goldStr} />
+	</div>
+
+	<div class="animate--on-visibility" data-animationclass="animate__slideInLeft">
+		<PartnerList category={institutionalStr} />
+	</div>
+</div>
+
+<style>
+	div {
+		--animate-duration: 1s;
+	}
+</style>

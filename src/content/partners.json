@@ -1,0 +1,230 @@
+[
+  {
+    "name": "Antas da Cunha",
+    "logo": "antas-ca-cunha.jpg",
+    "category": "Main Partner",
+    "website": "https://adcecija.pt/"
+  },
+  {
+    "name": "Institute of New Economy",
+    "logo": "instituto-new-economy.png",
+    "category": "Gold",
+    "website": "https://neweconomy.institute/"
+  },
+  {
+    "name": "Kore Partners",
+    "logo": "kore-advogados.jpg",
+    "category": "Gold",
+    "website": "https://www.korepartners.com/"
+  },
+  {
+    "name": "Q",
+    "logo": "q-protocol.png",
+    "category": "Gold",
+    "website": "https://q.org/"
+  },
+  {
+    "name": "Mercado Bitcoin Portugal",
+    "logo": "mercado-btc-portugal.png",
+    "category": "Gold",
+    "website": "https://mercadobitcoin.pt/"
+  },
+  {
+    "name": "Zome",
+    "logo": "zome.png",
+    "category": "Gold",
+    "website": "https://www.zome.pt/"
+  },
+  {
+    "name": "Zaisan",
+    "logo": "zaisan-eos.jpg",
+    "category": "Gold",
+    "website": "https://zaisan.io/"
+  },
+  {
+    "name": "Mário Moura",
+    "logo": "mario-moura.jpeg",
+    "category": "Gold",
+    "website": "https://mmc.pt/en/"
+  },
+  {
+    "name": "Bhout",
+    "logo": "bhout.jpg",
+    "category": "Gold",
+    "website": "https://www.bhout.com/"
+  },
+  {
+    "name": "Bison",
+    "logo": "bison-digital-assets.png",
+    "category": "Gold",
+    "website": "https://www.bisondigital.com/"
+  },
+  {
+    "name": "APBC",
+    "logo": "apbc.png",
+    "category": "Institutional Partner",
+    "website": ""
+  },
+  {
+    "name": "Denites",
+    "logo": "denites.jpeg",
+    "category": "Institutional Partner",
+    "website": "https://www.denites.com/"
+  },
+  {
+    "name": "Chillibangs",
+    "logo": "chilibangs.jpg",
+    "category": "Institutional Partner",
+    "website": "https://chilibangs.com/"
+  },
+  {
+    "name": "OffChain",
+    "logo": "offchain.png",
+    "category": "Institutional Partner",
+    "website": ""
+  },
+  {
+    "name": "ChainLink",
+    "logo": "chainlink.png",
+    "category": "Institutional Partner",
+    "website": "https://chain.link/"
+  },
+  {
+    "name": "Crypto Mondays",
+    "logo": "crypto-mondays-lx.png",
+    "category": "Institutional Partner",
+    "website": "https://cryptomondays.io/"
+  },
+  {
+    "name": "IEEE",
+    "logo": "ieee.png",
+    "category": "Institutional Partner",
+    "website": "https://ieee-pt.org/"
+  },
+  {
+    "name": "Meeta",
+    "logo": "meeta-club2.png",
+    "category": "Institutional Partner",
+    "website": ""
+  },
+  {
+    "name": "Arroz Estúdios",
+    "logo": "arroz-estudios.png",
+    "category": "Institutional Partner",
+    "website": "https://arrozestudios.pt/"
+  },
+  {
+    "name": "VRARA",
+    "logo": "vrar.png",
+    "category": "Institutional Partner",
+    "website": "https://www.thevrara.com/lisbon"
+  },
+  {
+    "name": "Crowdclass",
+    "logo": "crowdclass.png",
+    "category": "Institutional Partner",
+    "website": "https://crowdclass.com/"
+  },
+  {
+    "name": "Start Up Portugal",
+    "logo": "startup-portugal.png",
+    "category": "Institutional Partner",
+    "website": "https://startupportugal.com/pt/"
+  },
+  {
+    "name": "Start Up Lisboa",
+    "logo": "startup-lisboa.png",
+    "category": "Institutional Partner",
+    "website": "https://www.startuplisboa.com/"
+  },
+  {
+    "name": "Start Up Sintra",
+    "logo": "startup-sintra.jpeg",
+    "category": "Institutional Partner",
+    "website": "https://startupsintra.com/"
+  },
+  {
+    "name": "Start Up Leiria",
+    "logo": "startup-leiria.png",
+    "category": "Institutional Partner",
+    "website": "https://startupleiria.com/"
+  },
+  {
+    "name": "Start Up Braga",
+    "logo": "startup-braga.jpg",
+    "category": "Institutional Partner",
+    "website": "https://www.startupbraga.com/"
+  },
+  {
+    "name": "LisPolis",
+    "logo": "lispolis.png",
+    "category": "Institutional Partner",
+    "website": "https://www.lispolis.pt/"
+  },
+  {
+    "name": "Lisboa Unicorn Capital",
+    "logo": "lisbon-unicorn-capital.png",
+    "category": "Institutional Partner",
+    "website": ""
+  },
+  {
+    "name": "Casa do Impacto",
+    "logo": "casa-do-impacto.png",
+    "category": "Institutional Partner",
+    "website": "https://casadoimpacto.scml.pt/"
+  },
+  {
+    "name": "Start up Angra Heroismo",
+    "logo": "startup-angra.jpeg",
+    "category": "Institutional Partner",
+    "website": ""
+  },
+  {
+    "name": "FinTech House",
+    "logo": "fintech-house.png",
+    "category": "Institutional Partner",
+    "website": "https://thefintechhouse.com/"
+  },
+  {
+    "name": "Poolside",
+    "logo": "poolside.jpeg",
+    "category": "Institutional Partner",
+    "website": "https://www.poolside.co/hub"
+  },
+  {
+    "name": "Nova Blockchain Club",
+    "logo": "nova-blockchain-club.jpg",
+    "category": "Institutional Partner",
+    "website": ""
+  },
+  {
+    "name": "AFIP",
+    "logo": "afip.png",
+    "category": "Institutional Partner",
+    "website": "https://afip.pt/pt/"
+  },
+  {
+    "name": "Subvisual",
+    "logo": "subvisual.png",
+    "category": "Institutional Partner",
+    "website": "https://subvisual.com/"
+  },
+  {
+    "name": "Gnosis",
+    "logo": "gnosis.png",
+    "category": "Institutional Partner",
+    "website": "https://www.gnosis.io/"
+  },
+  {
+    "name": "Hypernest",
+    "logo": "hypernest.jpg",
+    "category": "Institutional Partner",
+    "website": "https://hypernest.xyz/"
+  },
+  {
+    "name": "Web3Go",
+    "logo": "web3go.jpeg",
+    "category": "Institutional Partner",
+    "website": "https://web3go.xyz/#/home/main"
+  }
+]

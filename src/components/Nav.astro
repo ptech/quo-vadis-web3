@@ -1,0 +1,56 @@
+---
+import StyledButton from './StyledButton.astro'
+---
+
+<nav id="navbar">
+	<img src="/logo/quovadis-logo.svg" />
+
+	<a
+		class="blocksurvey-share hidden sm:block"
+		href="https://blocksurvey.io/quo-vadis-web3-v5-lyrR1x.wRMaKE1LU0gr_yg?v=o"
+		target="_blank"
+	>
+		<StyledButton>Take our survey</StyledButton>
+	</a>
+</nav>
+
+<style>
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		position: fixed;
+		width: 100%;
+		top: 0;
+		padding: 0 20px;
+		height: var(--nav-height);
+		color: white;
+		z-index: 10;
+		transition: background-color 1000ms linear;
+
+		@media (min-width: 640px) {
+			padding: 0 80px;
+		}
+	}
+
+	.bgNav {
+		background-color: black;
+		opacity: 0.8;
+	}
+</style>
+
+<script>
+	const nav = document.getElementById('navbar')
+
+	const isScrollAtTop = () => window.scrollY === 0
+
+	window.addEventListener('scroll', () => {
+		setTimeout(() => {
+			isScrollAtTop() ? nav.classList.remove('bgNav') : nav.classList.add('bgNav')
+		}, 200)
+	})
+
+	window.addEventListener('DOMContentLoaded', () => {
+		isScrollAtTop() ? nav.classList.remove('bgNav') : nav.classList.add('bgNav')
+	})
+</script>

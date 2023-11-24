@@ -1,0 +1,109 @@
+---
+import StyledButton from './StyledButton.astro'
+---
+
+<div class="parallax h-screen">
+	<div class="ellipse ellipse-1 parallax__ellipse-1"></div>
+	<div class="ellipse ellipse-2 parallax__ellipse-2"></div>
+	<div class="container px-8">
+		<div class="parallax__infinite mx-auto -mt-24 max-w-xs sm:max-w-sm">
+			<dotlottie-player autoplay loop mode="normal" src="/media/lottie-files/infinite.lottie">
+			</dotlottie-player>
+		</div>
+		<h1 class="parallax__text">
+			Cartography and Mapping<br />
+			<span class="gradient"> of the Web3 Ecosystem</span>
+		</h1>
+		<a
+			class="blocksurvey-share parallax__btn"
+			href="https://blocksurvey.io/quo-vadis-web3-v5-lyrR1x.wRMaKE1LU0gr_yg?v=o"
+			target="_blank"
+		>
+			<StyledButton bright large>Take our survey</StyledButton>
+		</a>
+	</div>
+</div>
+
+<style>
+	h1 {
+		color: white;
+		font-size: 40px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 1.42;
+		margin: -80px 0 24px;
+
+		@media (min-width: 640px) {
+			font-size: 60px;
+		}
+	}
+
+	.container {
+		text-align: center;
+	}
+
+	.gradient {
+		background: linear-gradient(90deg, #ce4da4 0%, #7353e5 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.ellipse {
+		position: absolute;
+		width: 50%;
+		height: 50%;
+		max-width: 418px;
+		max-height: 418px;
+		flex-shrink: 0;
+		border-radius: 418px;
+		filter: blur(100px);
+
+		&.ellipse-1 {
+			top: 137px;
+			left: 73px;
+			background: rgba(206, 77, 164, 0.4);
+		}
+
+		&.ellipse-2 {
+			top: 292px;
+			right: 125px;
+			background: rgba(115, 83, 229, 0.4);
+		}
+	}
+
+	.parallax {
+		--parallax-speed: 10;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		& * {
+			grid-area: stack;
+			animation: parallax linear;
+			animation-timeline: scroll();
+		}
+	}
+
+	.parallax__ellipse-1 {
+		--parallax-speed: 10;
+	}
+	.parallax__ellipse-2 {
+		--parallax-speed: 20;
+	}
+	.parallax__infinite {
+		--parallax-speed: 5;
+	}
+	.parallax__text {
+		--parallax-speed: -10;
+	}
+	.parallax__btn {
+		--parallax-speed: 50;
+	}
+
+	@keyframes parallax {
+		to {
+			transform: translateY(calc(var(--parallax-speed) * 200px));
+		}
+	}
+</style>

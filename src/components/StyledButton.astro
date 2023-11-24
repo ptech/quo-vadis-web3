@@ -1,0 +1,42 @@
+---
+interface Props {
+	bright: boolean
+	large: boolean
+}
+
+const { bright, large } = Astro.props
+---
+
+<button class:list={['btn', { 'btn-bright': bright }, { 'btn-large': large }]}>
+	<slot />
+</button>
+
+<style>
+	.btn {
+		@apply px-6 py-2.5 text-white;
+		line-height: normal;
+		border: 3px solid transparent;
+		border-radius: 50px;
+		background:
+			linear-gradient(var(--main-bg-color), var(--main-bg-color)) padding-box,
+			linear-gradient(to right, #7353e5, #ce4da4, #ce4da4) border-box;
+
+		transition: all 0.3s ease-in-out;
+		transform-style: preserve-3d;
+
+		&:hover {
+			transform: scale(1.2);
+		}
+	}
+
+	.btn-bright {
+		color: var(--main-bg-color);
+		background:
+			linear-gradient(white, white) padding-box,
+			linear-gradient(to right, #7353e5, #ce4da4, #ce4da4) border-box;
+	}
+
+	.btn-large {
+		@apply px-10 py-4 text-lg;
+	}
+</style>

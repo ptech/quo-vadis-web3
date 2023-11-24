@@ -1,0 +1,62 @@
+---
+import partners from '../content/partners.json'
+
+const { category } = Astro.props
+---
+
+<>
+	<div class="mb-9 w-full text-center">
+		<h3 class="text-base leading-7 tracking-tight sm:text-xl">
+			{category}
+		</h3>
+	</div>
+	<div class="mx-auto mb-9 grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
+		<ul
+			role="list"
+			class="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-x-8 sm:gap-y-12 sm:gap-y-16 md:grid-cols-4 lg:grid-cols-5 xl:col-span-4 xl:grid-cols-6"
+		>
+			{
+				partners
+					.filter((el) => el.category.includes(category))
+					.map((partner) => (
+						<li class="sm:mb-6">
+							<a
+								href={partner.website || 'javascript:;'}
+								target={partner.website ? '_blank' : '_self'}
+							>
+								<div class="flex h-full flex-col items-center gap-x-6 text-center">
+									<div class="flex w-full justify-center rounded-lg bg-white">
+										<img
+											class="h-24 p-2"
+											src={`/partner-logos/${partner.logo}`}
+											alt={partner.name}
+										/>
+									</div>
+									<h3 class="text-sm leading-7 tracking-tight">{partner.name}</h3>
+								</div>
+							</a>
+						</li>
+					))
+			}
+		</ul>
+	</div>
+</>
+
+<style>
+	h3 {
+		font-family: inherit;
+	}
+
+	li {
+		transition: all 0.3s ease-in-out;
+		transform-style: preserve-3d;
+
+		&:hover {
+			transform: scale(1.1);
+
+			@media (min-width: 640px) {
+				transform: scale(1.2);
+			}
+		}
+	}
+</style>

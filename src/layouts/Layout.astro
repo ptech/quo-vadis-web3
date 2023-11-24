@@ -1,0 +1,68 @@
+---
+interface Props {
+	title: string
+}
+
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+
+		<script type="text/javascript" src="https://blocksurvey.io/assets/js/blocksurvey-widget.js"
+		></script>
+
+		<script
+			type="module"
+			src="https://unpkg.com/@dotlottie/player-component@2.3.0/dist/dotlottie-player.mjs"
+		></script>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	@font-face {
+		font-family: 'Poppins-Bold';
+		src: url('/fonts/Poppins-Bold.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: 'OpenSans-Regular';
+		src: url('/fonts/OpenSans-Regular.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+	}
+	:root {
+		--nav-height: 89px;
+		--footer-height: 453px;
+		--main-bg-color: #13111a;
+	}
+	html {
+		font-family: 'OpenSans-Regular', sans-serif;
+		background-color: var(--main-bg-color);
+	}
+	h1,
+	h2,
+	h3 {
+		font-family: 'Poppins-Bold', sans-serif;
+	}
+	.animate--on-visibility {
+		transition: visibility 0.3s ease-in-out;
+		visibility: hidden;
+	}
+	.animate__animated {
+		--animate-duration: 2s;
+		visibility: visible;
+	}
+</style>
