@@ -4,6 +4,9 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
+  // site: 'https://ptech.github.io',
+  base: '/quo-vadis-web3',
+  trailingSlash: 'always',
   integrations: [
     tailwind(),
   ]

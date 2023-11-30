@@ -5,7 +5,7 @@ import Rectangle from './Rectangle.astro'
 
 <>
 	<div id="overlay" class="overlay inactive">
-		<img class="btn--close-modal" src="/images/close.svg" />
+		<img class="btn--close-modal" src=`${import.meta.env.BASE_URL}images/close.svg` />
 	</div>
 	<div id="modal" class="modal inactive">
 		<Rectangle />
