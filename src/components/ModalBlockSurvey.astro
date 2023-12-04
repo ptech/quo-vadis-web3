@@ -1,16 +1,19 @@
 ---
-import KumuIframe from './KumuIframe.astro'
 import Rectangle from './Rectangle.astro'
+import BlockSurveyIframe from './BlockSurveyIframe.astro'
 ---
 
 <>
-	<div id="overlay" class="overlay inactive">
-		<img class="btn--close-modal" src=`${import.meta.env.BASE_URL}images/close.svg` />
+	<div id="overlay-blockSurvey" class="overlay inactive">
+		<img
+			class="btn--close-modal-blockSurvey"
+			src=`${import.meta.env.BASE_URL}images/close.svg`
+		/>
 	</div>
-	<div id="modal" class="modal inactive">
+	<div id="modal-blockSurvey" class="modal inactive">
 		<Rectangle />
 		<div class="h-full overflow-hidden rounded-3xl">
-			<KumuIframe />
+			<BlockSurveyIframe />
 		</div>
 	</div>
 </>
@@ -56,7 +59,7 @@ import Rectangle from './Rectangle.astro'
 		z-index: 15;
 	}
 
-	.btn--close-modal {
+	.btn--close-modal-blockSurvey {
 		@apply bg-gray-200;
 		position: absolute;
 		top: 8px;
@@ -72,10 +75,10 @@ import Rectangle from './Rectangle.astro'
 </style>
 
 <script>
-	const modal = document.getElementById('modal')
-	const overlay = document.getElementById('overlay')
-	const openModalBtn = document.querySelector('.btn--open-modal')
-	const closeModalBtn = document.querySelector('.btn--close-modal')
+	const modal = document.getElementById('modal-blockSurvey')
+	const overlay = document.getElementById('overlay-blockSurvey')
+	const openModalBtn = document.querySelector('.btn--open-modal-blockSurvey')
+	const closeModalBtn = document.querySelector('.btn--close-modal-blockSurvey')
 
 	const openModal = function () {
 		modal.classList.remove('inactive')
