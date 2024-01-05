@@ -10,22 +10,16 @@ import board from '../content/board.json'
 			class="animate--on-visibility text-3xl font-bold tracking-tight text-white sm:text-4xl"
 			data-animationclass="animate__heartBeat"
 		>
-			Our Board
+			Our Editorial Board
 		</h2>
 	</div>
 
-	<div class="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
-		<ul
-			role="list"
-			class="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-8 md:grid-cols-4 lg:grid-cols-5 xl:col-span-4 xl:grid-cols-6"
-		>
+	<div class="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8">
+		<ul role="list" class="flex flex-wrap justify-center gap-4 sm:gap-x-8 sm:gap-y-16">
 			{
 				board.map((person) => (
-					<li class="text-white">
-						<a
-							href={person.linkedin || 'javascript:;'}
-							target={person.linkedin ? '_blank' : '_self'}
-						>
+					<li class={`board-item text-white${person.linkedin ? ' link-scale' : ''}`}>
+						<a href={person.linkedin} target="_blank">
 							<div
 								class="animate--on-visibility card flex h-full flex-col items-center gap-x-6 py-4 text-center"
 								data-animationclass="animate__zoomIn"
@@ -61,7 +55,22 @@ import board from '../content/board.json'
 		font-family: inherit;
 	}
 
-	li {
+	.board-item {
+		--gap: 16px;
+		--n: 2;
+		width: calc((100% / var(--n)) - (((var(--n) - 1) / var(--n)) * var(--gap)));
+
+		@media (min-width: 640px) {
+			--gap: 32px;
+			--n: 3;
+		}
+
+		@media (min-width: 1024px) {
+			--n: 4;
+		}
+	}
+
+	.link-scale {
 		transition: all 0.3s ease-in-out;
 		transform-style: preserve-3d;
 

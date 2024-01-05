@@ -10,25 +10,21 @@ const { category } = Astro.props
 			{category}
 		</h3>
 	</div>
-	<div class="mx-auto mb-9 grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
-		<ul
-			role="list"
-			class="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-x-8 sm:gap-y-12 sm:gap-y-16 md:grid-cols-4 lg:grid-cols-5 xl:col-span-4 xl:grid-cols-6"
-		>
+	<div class="mx-auto mb-9 grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8">
+		<ul role="list" class="flex flex-wrap justify-center gap-4 sm:gap-x-8 sm:gap-y-16">
 			{
 				partners
 					.filter((el) => el.category.includes(category))
 					.map((partner) => (
-						<li class="sm:mb-6">
-							<a
-								href={partner.website || 'javascript:;'}
-								target={partner.website ? '_blank' : '_self'}
-							>
+						<li class={`partner-item sm:mb-6${partner.website ? ' link-scale' : ''}`}>
+							<a href={partner.website} target="_blank">
 								<div class="flex h-full flex-col items-center gap-x-6 text-center">
 									<div class="flex w-full justify-center rounded-lg bg-white">
 										<img
-											class="h-24 p-2"
-											src={`${import.meta.env.BASE_URL}partner-logos/${partner.logo}`}
+											class="h-24 object-contain p-2"
+											src={`${import.meta.env.BASE_URL}partner-logos/${
+												partner.logo
+											}`}
 											alt={partner.name}
 										/>
 									</div>
@@ -47,7 +43,22 @@ const { category } = Astro.props
 		font-family: inherit;
 	}
 
-	li {
+	.partner-item {
+		--gap: 16px;
+		--n: 2;
+		width: calc((100% / var(--n)) - (((var(--n) - 1) / var(--n)) * var(--gap)));
+
+		@media (min-width: 640px) {
+			--gap: 32px;
+			--n: 3;
+		}
+
+		@media (min-width: 1024px) {
+			--n: 4;
+		}
+	}
+
+	.link-scale {
 		transition: all 0.3s ease-in-out;
 		transform-style: preserve-3d;
 
