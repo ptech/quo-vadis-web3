@@ -11,10 +11,10 @@ import Rectangle from './Rectangle.astro'
 	<div class="container">
 		<Rectangle />
 		<div
-			class="animate--on-visibility content p-4 text-center sm:p-10 md:p-16 lg:p-20"
+			class="animate--on-visibility content p-4 text-center text-white sm:p-10 md:p-16 lg:p-20"
 			data-animationclass="animate__flipInX"
 		>
-			<h2 class="title text-3xl font-bold sm:text-4xl">Data is the New Gold</h2>
+			<h2 class="text-3xl font-bold sm:text-4xl">Data is the New Gold</h2>
 			<div class="mx-auto mt-6 max-w-2xl">
 				<p class="text-sm sm:text-lg sm:leading-8">
 					Any industry report and overview require reliable, deep, and comprehensive data
@@ -44,15 +44,7 @@ import Rectangle from './Rectangle.astro'
 	}
 
 	.content {
-		background-color: white;
-		opacity: 0.8;
+		background: rgba(19, 17, 26, 0.8);
 		border-radius: inherit;
-	}
-
-	.title {
-		background: linear-gradient(90deg, #ce4da4 0%, #7353e5 100%);
-		background-clip: text;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
 	}
 </style>
