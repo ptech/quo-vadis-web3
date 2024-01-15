@@ -1,40 +1,17 @@
 ---
 import Rectangle from './Rectangle.astro'
+import Carousel from './Carousel.astro'
 ---
 
 <div class="flex flex-col gap-y-8 px-6 py-10 text-white sm:p-16">
 	<h2
 		class="animate--on-visibility text-center text-3xl font-bold sm:text-4xl"
-		data-animationclass="animate__jello"
+		data-animationclass="animate__bounceInLeft"
 	>
 		Explore our data
 	</h2>
 
-	<div class="flex flex-col items-center justify-center gap-16 sm:flex-row">
-		<div
-			class="animate--on-visibility btn--open-modal-blockSurvey relative cursor-pointer"
-			data-animationclass="animate__bounceInRight"
-		>
-			<Rectangle />
-			<img class="rounded-lg" src=`${import.meta.env.BASE_URL}images/blocksurvey.png` />
-			<h3 class="text-sm leading-7 tracking-tight">Quo Vadis Web3 Survey Data</h3>
-		</div>
-		<div
-			class="animate--on-visibility btn--open-modal-kumu relative cursor-pointer"
-			data-animationclass="animate__bounceInLeft"
-		>
-			<Rectangle />
-			<img class="rounded-lg" src=`${import.meta.env.BASE_URL}images/kumu.png` />
-			<h3 class="text-sm leading-7 tracking-tight">Web3 Ecosystem in Portugal</h3>
-		</div>
-	</div>
+	<Carousel />
 </div>
 
-<style>
-	h3 {
-		font-family: inherit;
-		position: absolute;
-		left: 50%;
-		transform: translateX(-50%);
-	}
-</style>
+<style></style>
