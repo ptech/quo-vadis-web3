@@ -1,12 +1,25 @@
 ---
 import StyledButton from './StyledButton.astro'
+import navLinks from '../content/navLinks.json'
+
+const { pathname } = Astro.url
 ---
 
 <nav id="navbar">
 	<img src=`${import.meta.env.BASE_URL}logo/quovadis-logo.svg` />
 
+	<div class="links">
+		{
+			navLinks?.map((el) => (
+				<a class={`link-item${pathname === el.url ? ' active' : ''}`} href={el.url}>
+					{el.text}
+				</a>
+			))
+		}
+	</div>
+
 	<a
-		class="blocksurvey-share hidden sm:block"
+		class="blocksurvey-share hidden lg:block"
 		href="https://blocksurvey.io/quo-vadis-web3-v5-lyrR1x.wRMaKE1LU0gr_yg?v=o"
 		target="_blank"
 	>
@@ -18,18 +31,55 @@ import StyledButton from './StyledButton.astro'
 	nav {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		gap: 32px;
 		position: fixed;
 		width: 100%;
 		top: 0;
-		padding: 0 20px;
+		padding: 0 24px;
 		height: var(--nav-height);
 		color: white;
 		z-index: 10;
 		transition: background-color 1000ms linear;
 
-		@media (min-width: 640px) {
+		.links {
+			display: none;
+			font-family: sans-serif;
+
+			.link-item {
+				text-align: center;
+				font-size: 12px;
+				line-height: 150%;
+				color: #c0c0c0;
+
+				&.active {
+					font-weight: 700;
+					color: white;
+					pointer-events: none;
+				}
+			}
+		}
+
+		@media (min-width: 375px) {
+			.links {
+				display: flex;
+				flex: 1;
+				justify-content: flex-end;
+				align-items: center;
+				gap: 16px;
+			}
+		}
+
+		@media (min-width: 768px) {
 			padding: 0 80px;
+
+			.links {
+				gap: 32px;
+
+				.link-item {
+					min-width: 80px;
+					font-size: 16px;
+				}
+			}
 		}
 	}
 

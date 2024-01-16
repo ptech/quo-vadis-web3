@@ -20,7 +20,7 @@ import StyledButton from './StyledButton.astro'
 			<span class="gradient"> of the Web3 Ecosystem</span>
 		</h1>
 		<a
-			class="blocksurvey-share parallax__btn"
+			class="blocksurvey-share"
 			href="https://blocksurvey.io/quo-vadis-web3-v5-lyrR1x.wRMaKE1LU0gr_yg?v=o"
 			target="_blank"
 		>
@@ -78,7 +78,7 @@ import StyledButton from './StyledButton.astro'
 	}
 
 	.parallax {
-		--parallax-speed: 10;
+		--parallax-speed: 1;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -94,16 +94,16 @@ import StyledButton from './StyledButton.astro'
 		--parallax-speed: 10;
 	}
 	.parallax__ellipse-2 {
-		--parallax-speed: 20;
+		--parallax-speed: -10;
 	}
 	.parallax__infinite {
-		--parallax-speed: 5;
+		--parallax-speed: -20;
 	}
 	.parallax__text {
 		--parallax-speed: -10;
 	}
 	.parallax__btn {
-		--parallax-speed: 50;
+		--parallax-speed: -5;
 	}
 
 	@keyframes parallax {

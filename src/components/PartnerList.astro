@@ -5,21 +5,20 @@ const { category } = Astro.props
 ---
 
 <>
-	<div class="mb-9 w-full text-center">
-		<h3 class="text-base leading-7 tracking-tight sm:text-xl">
-			{category}
-		</h3>
-	</div>
-	<div class="mx-auto mb-9 grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8">
-		<ul role="list" class="flex flex-wrap justify-center gap-4 sm:gap-x-8 sm:gap-y-16">
+	<h2 class="mb-4 w-full">
+		{category}
+	</h2>
+	<div class="relative mb-16 grid">
+		<div class="backdrop"></div>
+		<ul role="list" class="partner-list">
 			{
 				partners
 					.filter((el) => el.category.includes(category))
 					.map((partner) => (
-						<li class={`partner-item sm:mb-6${partner.website ? ' link-scale' : ''}`}>
+						<li class={`partner-item bg-white${partner.website ? ' link-scale' : ''}`}>
 							<a href={partner.website} target="_blank">
-								<div class="flex h-full flex-col items-center gap-x-6 text-center">
-									<div class="flex w-full justify-center rounded-lg bg-white">
+								<div class="flex h-full flex-col items-center justify-center text-center">
+									<div class="flex w-full flex-col">
 										<img
 											class="h-24 object-contain p-2"
 											src={`${import.meta.env.BASE_URL}partner-logos/${
@@ -27,8 +26,8 @@ const { category } = Astro.props
 											}`}
 											alt={partner.name}
 										/>
+										<h3>{partner.name}</h3>
 									</div>
-									<h3 class="text-sm leading-7 tracking-tight">{partner.name}</h3>
 								</div>
 							</a>
 						</li>
@@ -39,34 +38,71 @@ const { category } = Astro.props
 </>
 
 <style>
+	h2 {
+		text-align: center;
+		font-family: Poppins-Bold;
+		font-size: 32px;
+		line-height: normal;
+		background: linear-gradient(90deg, #ce4da4 0%, #7353e5 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
 	h3 {
 		font-family: inherit;
+		color: #13111a;
+		font-size: 12px;
+		line-height: 150%;
+		opacity: 0.5;
 	}
 
-	.partner-item {
-		--gap: 16px;
-		--n: 2;
-		width: calc((100% / var(--n)) - (((var(--n) - 1) / var(--n)) * var(--gap)));
-
-		@media (min-width: 640px) {
-			--gap: 32px;
-			--n: 3;
-		}
-
-		@media (min-width: 1024px) {
-			--n: 4;
-		}
+	.backdrop {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		opacity: 0.9;
+		background: linear-gradient(
+			90deg,
+			rgba(138, 121, 255, 0.8) 0%,
+			rgba(206, 77, 164, 0.8) 100%
+		);
+		filter: blur(30px);
 	}
 
-	.link-scale {
-		transition: all 0.3s ease-in-out;
-		transform-style: preserve-3d;
+	.partner-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1px;
+		border-radius: 20px;
+		overflow: hidden;
 
-		&:hover {
-			transform: scale(1.1);
+		.partner-item {
+			min-height: 160px;
+			transition: all 0.3s ease-in-out;
+			transform-style: preserve-3d;
+			--gap: 1px;
+			--n: 2;
+			width: calc((100% / var(--n)) - (((var(--n) - 1) / var(--n)) * var(--gap)));
 
 			@media (min-width: 640px) {
-				transform: scale(1.2);
+				--n: 3;
+			}
+
+			@media (min-width: 1024px) {
+				--n: 4;
+			}
+
+			&:only-child {
+				flex: 1;
+			}
+		}
+
+		.link-scale {
+			&:hover {
+				transform: scale(0.9);
 			}
 		}
 	}
