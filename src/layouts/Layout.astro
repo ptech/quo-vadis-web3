@@ -1,4 +1,6 @@
 ---
+import 'animate.css'
+
 interface Props {
 	title: string
 }
@@ -28,6 +30,7 @@ const { title } = Astro.props
 		<slot />
 	</body>
 </html>
+
 <style is:global>
 	@font-face {
 		font-family: 'Poppins-Bold';
@@ -52,6 +55,10 @@ const { title } = Astro.props
 		font-family: 'OpenSans-Regular', sans-serif;
 		background-color: var(--main-bg-color);
 	}
+	main {
+		width: 100vw;
+		overflow-x: hidden;
+	}
 	h1,
 	h2,
 	h3 {
@@ -66,3 +73,41 @@ const { title } = Astro.props
 		visibility: visible;
 	}
 </style>
+
+<script>
+	const animatingClassName = 'animate__animated'
+
+	const observerOptions = {
+		root: null,
+		/** @type {String} */
+		rootMargin: '0px',
+		/** @type {Number} */
+		threshold: 0.2,
+	}
+
+	function intersectionCallback(intersectingEntries) {
+		for (let j = 0; j < intersectingEntries.length; j++) {
+			if (
+				intersectingEntries[j].isIntersecting &&
+				intersectingEntries[j].intersectionRatio > observerOptions.threshold
+			) {
+				if (intersectingEntries[j].target && intersectingEntries[j].target.classList) {
+					var animationClassName = intersectingEntries[j].target.dataset.animationclass
+					intersectingEntries[j].target.classList.add(
+						animatingClassName,
+						animationClassName,
+					)
+				}
+			}
+		}
+	}
+
+	document.addEventListener('DOMContentLoaded', function () {
+		const observer = new IntersectionObserver(intersectionCallback, observerOptions)
+		const elementsAnimatedOnVisibility =
+			document.getElementsByClassName('animate--on-visibility')
+		for (let i = 0; i < elementsAnimatedOnVisibility.length; i++) {
+			observer.observe(elementsAnimatedOnVisibility[i])
+		}
+	})
+</script>
