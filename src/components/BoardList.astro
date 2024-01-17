@@ -2,7 +2,7 @@
 import board from '../content/board.json'
 ---
 
-<div class="py-44">
+<div class="relative py-44">
 	<div class="ellipse"></div>
 	<div class="ellipse ellipse-2"></div>
 	<div class="ellipse ellipse-3"></div>
@@ -20,7 +20,7 @@ import board from '../content/board.json'
 					<li class={`board-item text-white${person.linkedin ? ' link-scale' : ''}`}>
 						<a href={person.linkedin} target="_blank">
 							<div
-								class="animate--on-visibility card flex h-full flex-col items-center justify-center py-4"
+								class="animate--on-visibility card flex h-full flex-col items-center justify-center py-4 text-center"
 								data-animationclass="animate__zoomIn"
 							>
 								<img class="avatar-img mb-4 h-20 object-contain" src="" />
