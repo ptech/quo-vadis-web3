@@ -1,0 +1,135 @@
+---
+import navLinks from '../content/navLinks.json'
+
+const { pathname } = Astro.url
+---
+
+<div class="burger">
+	<button id="burger-btn">
+		<img class="burger-img" src=`${import.meta.env.BASE_URL}images/burger.svg` />
+		<img class="close-img" src=`${import.meta.env.BASE_URL}images/close-burger.svg` />
+	</button>
+	<div class="backdrop"></div>
+	<div class="menu">
+		{
+			navLinks?.map((el) => (
+				<a class={`menu-item${pathname === el.url ? ' active' : ''}`} href={el.url}>
+					{el.text}
+				</a>
+			))
+		}
+	</div>
+</div>
+
+<style>
+	.burger {
+		display: flex;
+
+		img {
+			transition: opacity 0.5s ease-in-out;
+		}
+
+		.burger-img {
+			opacity: 1;
+			height: auto;
+		}
+		.close-img {
+			opacity: 0;
+			height: 0;
+		}
+
+		.backdrop {
+			position: fixed;
+			top: var(--nav-height);
+			bottom: 0;
+			left: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.8);
+			transition: 0.5s ease-in-out;
+			opacity: 0;
+			height: 0;
+		}
+
+		.menu {
+			--burger-menu-width: 200px;
+			position: fixed;
+			top: var(--nav-height);
+			right: 0;
+			padding: 32px;
+			background: var(--main-bg-color);
+			height: calc(100vh - var(--nav-height));
+			width: var(--burger-menu-width);
+			transition: 0.5s ease-in-out;
+			transform: translateX(100%);
+			display: flex;
+			flex-direction: column;
+			gap: 32px;
+
+			.menu-item {
+				font-size: 14px;
+				line-height: 150%;
+				color: #c0c0c0;
+
+				&.active {
+					font-weight: 700;
+					color: white;
+					pointer-events: none;
+				}
+			}
+		}
+
+		&.open {
+			.burger-img {
+				opacity: 0;
+				height: 0;
+			}
+
+			.close-img {
+				opacity: 1;
+				height: auto;
+			}
+
+			.menu {
+				transform: translateX(0);
+			}
+
+			.backdrop {
+				opacity: 1;
+				height: auto;
+			}
+		}
+
+		@media (min-width: 768px) {
+			display: none;
+		}
+	}
+</style>
+
+<script>
+	const burger = document.getElementsByClassName('burger')
+	const burgerBtn = document.getElementById('burger-btn')
+	const body = document.body
+	const backdrop = document.getElementsByClassName('backdrop')
+
+	burgerBtn.addEventListener('click', () => {
+		burger[0].classList.toggle('open')
+		body.classList.toggle('noscroll')
+	})
+
+	const closeMenu = () => {
+		burger[0].classList.remove('open')
+		body.classList.remove('noscroll')
+	}
+
+	backdrop[0].addEventListener('click', () => {
+		closeMenu()
+	})
+
+	window.addEventListener('resize', () => {
+		if (window.matchMedia('(min-width: 768px)').matches) {
+			closeMenu()
+		}
+	})
+</script>

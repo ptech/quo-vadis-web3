@@ -6,12 +6,12 @@ import StyledButton from './StyledButton.astro'
 	<div class="ellipse ellipse-1 parallax__ellipse-1"></div>
 	<div class="ellipse ellipse-2 parallax__ellipse-2"></div>
 	<div class="container px-8">
-		<div class="parallax__infinite mx-auto -mt-24 max-w-xs sm:max-w-sm">
+		<div class="parallax__infinite mx-auto max-w-xs sm:max-w-lg">
 			<dotlottie-player
 				autoplay
 				loop
 				mode="normal"
-				src={import.meta.env.BASE_URL + 'media/lottie-files/infinite.lottie'}
+				src={import.meta.env.BASE_URL + 'media/lottie-files/hero.json'}
 			>
 			</dotlottie-player>
 		</div>
@@ -20,7 +20,7 @@ import StyledButton from './StyledButton.astro'
 			<span class="gradient"> of the Web3 Ecosystem</span>
 		</h1>
 		<a
-			class="blocksurvey-share"
+			class="blocksurvey-share parallax__btn"
 			href="https://blocksurvey.io/quo-vadis-web3-v5-lyrR1x.wRMaKE1LU0gr_yg?v=o"
 			target="_blank"
 		>
@@ -36,10 +36,11 @@ import StyledButton from './StyledButton.astro'
 		font-style: normal;
 		font-weight: 700;
 		line-height: 1.42;
-		margin: -80px 0 24px;
+		margin: -70px 0 24px;
 
 		@media (min-width: 640px) {
 			font-size: 60px;
+			margin-top: -150px;
 		}
 	}
 

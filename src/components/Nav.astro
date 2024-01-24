@@ -1,12 +1,15 @@
 ---
 import StyledButton from './StyledButton.astro'
+import Burger from './Burger.astro'
 import navLinks from '../content/navLinks.json'
 
 const { pathname } = Astro.url
 ---
 
 <nav id="navbar">
-	<img src=`${import.meta.env.BASE_URL}logo/quovadis-logo.svg` />
+	<a href="/">
+		<img src=`${import.meta.env.BASE_URL}logo/quovadis-logo.svg` />
+	</a>
 
 	<div class="links">
 		{
@@ -25,6 +28,7 @@ const { pathname } = Astro.url
 	>
 		<StyledButton>Take our Web3 Survey</StyledButton>
 	</a>
+	<Burger />
 </nav>
 
 <style>
@@ -40,6 +44,7 @@ const { pathname } = Astro.url
 		color: white;
 		z-index: 10;
 		transition: background-color 1000ms linear;
+		justify-content: space-between;
 
 		.links {
 			display: none;
@@ -59,20 +64,14 @@ const { pathname } = Astro.url
 			}
 		}
 
-		@media (min-width: 375px) {
+		@media (min-width: 768px) {
+			padding: 0 80px;
+
 			.links {
 				display: flex;
 				flex: 1;
 				justify-content: flex-end;
 				align-items: center;
-				gap: 16px;
-			}
-		}
-
-		@media (min-width: 768px) {
-			padding: 0 80px;
-
-			.links {
 				gap: 32px;
 
 				.link-item {
@@ -84,8 +83,7 @@ const { pathname } = Astro.url
 	}
 
 	.bgNav {
-		background-color: black;
-		opacity: 0.8;
+		background-color: rgba(0, 0, 0, 0.8);
 	}
 </style>
 

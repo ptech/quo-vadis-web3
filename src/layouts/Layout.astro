@@ -56,8 +56,9 @@ const { title } = Astro.props
 		background-color: var(--main-bg-color);
 	}
 	main {
+		display: flex;
+		flex-direction: column;
 		width: 100vw;
-		overflow-x: hidden;
 	}
 	h1,
 	h2,
@@ -71,6 +72,26 @@ const { title } = Astro.props
 	.animate__animated {
 		--animate-duration: 2s;
 		visibility: visible;
+	}
+
+	.scroll-reveal span {
+		color: hsl(0 0% 100% / 0.3);
+		background-clip: text;
+		background-repeat: no-repeat;
+		background-size: 0% 100%;
+		background-image: linear-gradient(90deg, white, white);
+		animation: scroll-reveal linear forwards;
+		animation-timeline: view(y);
+	}
+
+	@keyframes scroll-reveal {
+		to {
+			background-size: 100% 100%;
+		}
+	}
+
+	.noscroll {
+		overflow: hidden;
 	}
 </style>
 

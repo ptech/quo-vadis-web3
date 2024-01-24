@@ -1,36 +1,67 @@
-<div class="items-center gap-16 px-6 py-10 text-white sm:flex sm:px-16 sm:py-24">
-	<div
-		class="animate--on-visibility mx-auto w-1/2 flex-1"
-		data-animationclass="animate__slideInLeft"
-	>
+<div
+	class="mx-auto flex max-w-7xl flex-col items-center gap-4 px-6 py-10 text-white sm:px-20 sm:py-24 lg:flex-row lg:gap-16"
+>
+	<div class="relative lg:w-1/3">
+		<div class="ellipse"></div>
 		<dotlottie-player
 			autoplay
 			loop
 			mode="normal"
-			src={import.meta.env.BASE_URL + 'media/lottie-files/360animation.lottie'}
+			src={import.meta.env.BASE_URL + 'media/lottie-files/loading.json'}
 		>
 		</dotlottie-player>
 	</div>
-	<div class="flex-1">
-		<h2
-			class="animate--on-visibility mb-4 text-3xl font-bold tracking-tight sm:mb-14 sm:text-4xl"
-			data-animationclass="animate__slideInRight"
-		>
-			A 360º perspective
+	<div class="scroll-reveal flex-1">
+		<h2 class="mb-4 text-3xl font-bold tracking-tight sm:mb-14 sm:text-4xl">
+			An 360º perspective Industry-Level reporting
 		</h2>
-		<p
-			class="animate--on-visibility text-sm leading-8 text-gray-400 sm:text-lg"
-			data-animationclass="animate__slideInRight"
-		>
-			Most industry reports don’t reflect the complexity and the wide professional impact Web3
-			today has in the lives of not only founders, developers, or investors, but also of
-			lawyer, lobbyists, community managers, digital artists, academics and researchers,
-			business developers, regulators, traders, Marketers or copywriters, community managers,
-			event organizers, incubator – accelerator managers, consultants, advisors, and so many
-			other professions today related to this industry.
-			<br />
-			<br />
-			 Our project intends to cover the Web3 space in a 360º perspective.
-		</p>
+		<div class="text-sm leading-8 sm:text-lg">
+			<p class="mb-4">
+				<span>
+					If Web3 wants to be perceived as an Industry, it should behave as industries do.
+				</span>
+			</p>
+			<p class="animate--on-visibility opacity-50" data-animationclass="animate__slideInUp">
+				Any industry needs to understand the nature and characteristics of its
+				constitutional elements, mature its internal coherence, and develop a comprehensive
+				360º narrative to add to its sectorial or vertical reporting.
+				<br />
+				<br />
+				Quo Vadis Web3 intends to contribute for the wider assessment of an industry that spreads
+				its solutions to all sectors of human activity, and map the professional contributions
+				of not only founders, developers, or investors, but also of lawyers, community managers,
+				digital artists, academics and researchers, business developers, regulators, lobbyists,
+				traders, marketers or copywriters, community managers, event organizers, incubator and
+				accelerator managers, consultants, advisors, and so many other professions have today
+				in this industry.
+				<br />
+				<br />
+				We want to cartograph the Web3 space in a 360º perspective.
+			</p>
+		</div>
 	</div>
 </div>
+
+<style>
+	.ellipse {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		max-width: 418px;
+		max-height: 418px;
+		flex-shrink: 0;
+		border-radius: 418px;
+		filter: blur(100px);
+		background: rgba(206, 77, 164, 0.4);
+	}
+
+	.scroll-reveal p span {
+		font-size: 32px;
+		font-weight: 400;
+		line-height: 150%;
+		text-transform: uppercase;
+
+		animation-range-start: cover 15vh;
+		animation-range-end: cover 80vh;
+	}
+</style>
