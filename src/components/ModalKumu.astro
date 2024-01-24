@@ -76,15 +76,18 @@ import Rectangle from './Rectangle.astro'
 	const overlay = document.getElementById('overlay-kumu')
 	const openModalBtn = document.querySelector('.btn--open-modal-kumu')
 	const closeModalBtn = document.querySelector('.btn--close-modal-kumu')
+	const body = document.body
 
 	const openModal = function () {
 		modal.classList.remove('inactive')
 		overlay.classList.remove('inactive')
+		body.classList.add('noscroll')
 	}
 
 	const closeModal = function () {
 		modal.classList.add('inactive')
 		overlay.classList.add('inactive')
+		body.classList.remove('noscroll')
 	}
 
 	openModalBtn.addEventListener('click', openModal)

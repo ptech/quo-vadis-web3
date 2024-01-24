@@ -110,22 +110,26 @@ const { pathname } = Astro.url
 <script>
 	const burger = document.getElementsByClassName('burger')
 	const burgerBtn = document.getElementById('burger-btn')
-	const body = document.getElementsByTagName('body')
+	const body = document.body
 	const backdrop = document.getElementsByClassName('backdrop')
 
 	burgerBtn.addEventListener('click', () => {
 		burger[0].classList.toggle('open')
-		body[0].classList.toggle('noscroll')
+		body.classList.toggle('noscroll')
 	})
 
-	backdrop[0].addEventListener('click', () => {
+	const closeMenu = () => {
 		burger[0].classList.remove('open')
+		body.classList.remove('noscroll')
+	}
+
+	backdrop[0].addEventListener('click', () => {
+		closeMenu()
 	})
 
 	window.addEventListener('resize', () => {
 		if (window.matchMedia('(min-width: 768px)').matches) {
-			burger[0].classList.remove('open')
-			body[0].classList.remove('noscroll')
+			closeMenu()
 		}
 	})
 </script>
