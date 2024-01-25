@@ -8,36 +8,41 @@ import counters from '../content/counters.json'
 	<div class="ellipse"></div>
 	<h2 class="text-center text-3xl font-bold sm:text-4xl">Explore our data</h2>
 	<div class="flex flex-col gap-16 sm:flex-row">
-		<div
-			class="card animate--on-visibility btn--open-modal-blockSurvey flex-1"
-			data-animationclass="animate__slideInUp"
-		>
-			<dotlottie-player
-				autoplay
-				loop
-				mode="normal"
-				src={import.meta.env.BASE_URL + 'media/lottie-files/blocksurvey.json'}
-			>
-			</dotlottie-player>
-			<div class="text-content">
-				<p class="counter" data-target={counters?.web3SurveyRespondents}>0</p>
-				<p>Web3 Survey Respondents</p>
+		<div class="animate--on-visibility flex-1" data-animationclass="animate__slideInUp">
+			<div class="scale">
+				<div class="rectangle"></div>
+				<div class="card btn--open-modal-blockSurvey flex-1">
+					<dotlottie-player
+						autoplay
+						loop
+						mode="normal"
+						src={import.meta.env.BASE_URL + 'media/lottie-files/blocksurvey.json'}
+					>
+					</dotlottie-player>
+					<div class="text-content">
+						<p class="counter" data-target={counters?.web3SurveyRespondents}>0</p>
+						<p>Web3 Survey Respondents</p>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div
-			class="card animate--on-visibility btn--open-modal-kumu flex-1"
-			data-animationclass="animate__slideInUp"
-		>
-			<dotlottie-player
-				autoplay
-				loop
-				mode="normal"
-				src={import.meta.env.BASE_URL + 'media/lottie-files/kumu.json'}
-			>
-			</dotlottie-player>
-			<div class="text-content">
-				<p class="counter" data-target={counters?.web3EcosystemNumbers}>0</p>
-				<p>Web3 Ecosystem Numbers</p>
+
+		<div class="animate--on-visibility flex-1" data-animationclass="animate__slideInUp">
+			<div class="scale">
+				<div class="rectangle"></div>
+				<div class="card btn--open-modal-kumu flex-1">
+					<dotlottie-player
+						autoplay
+						loop
+						mode="normal"
+						src={import.meta.env.BASE_URL + 'media/lottie-files/kumu.json'}
+					>
+					</dotlottie-player>
+					<div class="text-content">
+						<p class="counter" data-target={counters?.web3EcosystemNumbers}>0</p>
+						<p>Web3 Ecosystem Numbers</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -85,6 +90,33 @@ import counters from '../content/counters.json'
 				background-clip: text;
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
+			}
+		}
+	}
+
+	.scale {
+		display: flex;
+		height: 100%;
+		transition: all 0.3s ease-in-out;
+		transform-style: preserve-3d;
+
+		.rectangle {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			z-index: -1;
+			border-radius: 20px;
+			background: linear-gradient(90deg, #8a79ff 0%, #ce4da4 100%);
+			filter: blur(30px);
+			opacity: 0;
+			transition: opacity 0.3s ease-in-out;
+		}
+
+		&:hover {
+			transform: scale(1.1);
+
+			.rectangle {
+				opacity: 1;
 			}
 		}
 	}
