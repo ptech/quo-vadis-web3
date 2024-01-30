@@ -220,5 +220,11 @@
     "logo": "web3go.jpeg",
     "category": "Institutional Partner",
     "website": "https://web3go.xyz/#/home/main"
+  },
+  {
+    "name": "Genesis Studio",
+    "logo": "genesis-studio.png",
+    "category": "Main Partner",
+    "website": "https://genesis.studio/"
   }
 ]
