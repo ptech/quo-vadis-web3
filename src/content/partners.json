@@ -226,5 +226,83 @@
     "logo": "genesis-studio.jpeg",
     "category": "Main Partner",
     "website": "https://genesis.studio/"
+  },
+  {
+    "name": "Unlock It",
+    "logo": "unlockit.png",
+    "category": "Main Partner",
+    "website": "https://unlockit.io"
+  },
+  {
+    "name": "CV Labs",
+    "logo": "cv-labs.jpeg",
+    "category": "Institutional Partner",
+    "website": "https://www.cvlabs.com"
+  },
+  {
+    "name": "Instituto Superior Técnico",
+    "logo": "ist.png",
+    "category": "Institutional Partner",
+    "website": "https://tecnico.ulisboa.pt"
+  },
+  {
+    "name": "Universidade Católica Portuguesa",
+    "logo": "ucp.jpeg",
+    "category": "Institutional Partner",
+    "website": "https://www.ucp.pt"
+  },
+  {
+    "name": "Algorhitm G",
+    "logo": "algorithm-g.jpeg",
+    "category": "Institutional Partner",
+    "website": "https://www.algorithmg.xyz"
+  },
+  {
+    "name": "351",
+    "logo": "351.jpeg",
+    "category": "Institutional Partner",
+    "website": "https://351startups.com"
+  },
+  {
+    "name": "Metavini",
+    "logo": "metavini.png",
+    "category": "Institutional Partner",
+    "website": "https://twitter.com/metavininft?lang=ar"
+  },
+  {
+    "name": "Indico",
+    "logo": "indico.jpeg",
+    "category": "Institutional Partner",
+    "website": "https://www.indicocapital.com"
+  },
+  {
+    "name": "Anetie",
+    "logo": "anetie.jpeg",
+    "category": "Institutional Partner",
+    "website": "https://anetie.pt/en/front-page-en"
+  },
+  {
+    "name": "Anipe",
+    "logo": "anipe.jpeg",
+    "category": "Institutional Partner",
+    "website": "https://www.anipe.pt"
+  },
+  {
+    "name": "Blocksurvey",
+    "logo": "blocksurvey.jpeg",
+    "category": "Institutional Partner",
+    "website": "https://blocksurvey.io"
+  },
+  {
+    "name": "ISCTE",
+    "logo": "iscte.jpeg",
+    "category": "Institutional Partner",
+    "website": "https://www.iscte-iul.pt"
+  },
+  {
+    "name": "Dope",
+    "logo": "dope.jpeg",
+    "category": "Main Partner",
+    "website": "https://www.dopegames.tv/"
   }
 ]
