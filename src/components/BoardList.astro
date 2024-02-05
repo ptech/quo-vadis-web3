@@ -1,31 +1,54 @@
 ---
 import board from '../content/board.json'
+
+const shuffleArray = <T,>(array: T[]) => {
+	return array
+		.map((value) => ({ value, sort: Math.random() }))
+		.sort((a, b) => a.sort - b.sort)
+		.map(({ value }) => value)
+}
+
+const totalAvatars = 18
+const numbers = Array.from({ length: totalAvatars }, (_, index) => index + 1)
+
+const shuffledNumbers = shuffleArray(numbers)
+const shuffledBoard = shuffleArray(board).map((value, index) => ({
+	...value,
+	avatar:
+		import.meta.env.BASE_URL +
+		`media/lottie-files/avatars/${shuffledNumbers[index % totalAvatars]}.lottie`,
+}))
 ---
 
-<div class="relative overflow-x-hidden py-44">
+<div class="relative overflow-x-hidden px-6 py-44 lg:px-20">
 	<div class="ellipse"></div>
 	<div class="ellipse ellipse-2"></div>
 	<div class="ellipse ellipse-3"></div>
 
-	<div class="mx-auto grid max-w-6xl px-6 lg:px-20">
+	<div class="mx-auto grid max-w-7xl">
 		<h2
 			class="animate--on-visibility mb-9 text-3xl font-bold tracking-tight text-white sm:text-4xl"
 			data-animationclass="animate__slideInRight"
 		>
 			Editorial Board
 		</h2>
-		<ul role="list" class="flex flex-wrap justify-center gap-4">
+		<ul role="list" class="flex flex-wrap justify-center gap-x-4 gap-y-9">
 			{
-				board.map((person) => (
+				shuffledBoard.map((person) => (
 					<li class={`board-item text-white${person.linkedin ? ' link-scale' : ''}`}>
 						<a href={person.linkedin} target="_blank">
 							<div
 								class="animate--on-visibility h-full"
 								data-animationclass="animate__zoomIn"
 							>
-								<div class="backdrop" />
-								<div class="card flex h-full flex-col items-center justify-center py-4 text-center">
-									<img class="avatar-img mb-4 h-20 object-contain" src="" />
+								<div class="card flex h-full flex-col items-center justify-center pb-4 text-center">
+									<dotlottie-player
+										class="lottie h-28"
+										autoplay
+										loop
+										playMode="bounce"
+										src={person.avatar}
+									/>
 									<h3 class="text-base tracking-tight">{person.name}</h3>
 									<p class="text-xs opacity-50">{person.company}</p>
 								</div>
@@ -72,33 +95,29 @@ import board from '../content/board.json'
 		font-family: inherit;
 	}
 
-	.backdrop {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		opacity: 0.9;
-		background: linear-gradient(
-			90deg,
-			rgba(138, 121, 255, 0.8) 0%,
-			rgba(206, 77, 164, 0.8) 100%
-		);
-		filter: blur(30px);
-		z-index: -1;
-	}
-
 	.board-item {
 		--gap: 16px;
-		--n: 2;
+		--n: 1;
 		width: calc((100% / var(--n)) - (((var(--n) - 1) / var(--n)) * var(--gap)));
 
-		@media (min-width: 640px) {
+		@media (min-width: 400px) {
+			--n: 2;
+		}
+
+		@media (min-width: 600px) {
 			--n: 3;
 		}
 
-		@media (min-width: 1024px) {
+		@media (min-width: 856px) {
 			--n: 4;
+		}
+
+		@media (min-width: 1080px) {
+			--n: 5;
+		}
+
+		@media (min-width: 1440px) {
+			--n: 6;
 		}
 	}
 
@@ -113,41 +132,10 @@ import board from '../content/board.json'
 
 	.card {
 		border-radius: 20px;
-		background: #1d1a27;
+		background: #ffffff10;
+	}
 
-		@media (min-width: 640px) {
-			aspect-ratio: 1 / 1;
-		}
+	.lottie {
+		scale: 1.4;
 	}
 </style>
-
-<script>
-	const images = document.querySelectorAll('.avatar-img')
-	const numberOfImgs = 51
-	const boardLength = images.length
-	const numbers = Array.from({ length: numberOfImgs }, (_, index) => index + 1)
-
-	const shuffleArray = () => {
-		for (let i = numberOfImgs - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1))
-			;[numbers[i], numbers[j]] = [numbers[j], numbers[i]]
-		}
-
-		if (boardLength > numberOfImgs) {
-			const extraArray = []
-
-			for (let i = 0; i < boardLength - numberOfImgs; i++) {
-				const randomIdx = Math.floor(Math.random() * boardLength + 1)
-				extraArray[i] = randomIdx
-			}
-
-			numbers.push(...extraArray)
-		}
-	}
-
-	shuffleArray()
-
-	for (let i = 0; i < images.length; i++) {
-		images[i].src = `${import.meta.env.BASE_URL}avatars/${numbers[i]}.svg`
-	}
-</script>
