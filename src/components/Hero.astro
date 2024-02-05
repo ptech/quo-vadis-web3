@@ -2,30 +2,30 @@
 import StyledButton from './StyledButton.astro'
 ---
 
-<div class="parallax h-screen">
-	<div class="ellipse ellipse-1 parallax__ellipse-1"></div>
-	<div class="ellipse ellipse-2 parallax__ellipse-2"></div>
-	<div class="container px-8">
-		<div class="parallax__infinite mx-auto max-w-xs sm:max-w-lg">
-			<dotlottie-player
-				autoplay
-				loop
-				mode="normal"
-				src={import.meta.env.BASE_URL + 'media/lottie-files/hero.lottie'}
+<div class="h-screen h-svh">
+	<video
+		class="absolute h-full w-full object-cover"
+		src={import.meta.env.BASE_URL + 'media/videos/hero.mp4'}
+		loop
+		muted
+		autoplay
+		playsinline></video>
+	<div class="ellipse ellipse-1"></div>
+	<div class="ellipse ellipse-2"></div>
+	<div class="parallax h-full">
+		<div class="container z-0 px-8">
+			<h1 class="parallax__text">
+				Cartography and Mapping<br />
+				<span class="gradient"> of the Web3 Ecosystem</span>
+			</h1>
+			<a
+				class="blocksurvey-share parallax__btn"
+				href="https://blocksurvey.io/quo-vadis-web3-v5-lyrR1x.wRMaKE1LU0gr_yg?v=o"
+				target="_blank"
 			>
-			</dotlottie-player>
+				<StyledButton>Take our Web3 Survey</StyledButton>
+			</a>
 		</div>
-		<h1 class="parallax__text">
-			Cartography and Mapping<br />
-			<span class="gradient"> of the Web3 Ecosystem</span>
-		</h1>
-		<a
-			class="blocksurvey-share parallax__btn"
-			href="https://blocksurvey.io/quo-vadis-web3-v5-lyrR1x.wRMaKE1LU0gr_yg?v=o"
-			target="_blank"
-		>
-			<StyledButton bright large>Take our Web3 Survey</StyledButton>
-		</a>
 	</div>
 </div>
 
@@ -46,6 +46,8 @@ import StyledButton from './StyledButton.astro'
 
 	.container {
 		text-align: center;
+		margin-top: 30vh;
+		margin-top: 30svh;
 	}
 
 	.gradient {
@@ -91,15 +93,6 @@ import StyledButton from './StyledButton.astro'
 		}
 	}
 
-	.parallax__ellipse-1 {
-		--parallax-speed: 10;
-	}
-	.parallax__ellipse-2 {
-		--parallax-speed: -10;
-	}
-	.parallax__infinite {
-		--parallax-speed: -20;
-	}
 	.parallax__text {
 		--parallax-speed: -10;
 	}
