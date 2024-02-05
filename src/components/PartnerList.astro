@@ -8,7 +8,10 @@ const { category } = Astro.props
 	<h2 class="mb-4 w-full">
 		{category}
 	</h2>
-	<div class="relative mb-16 grid">
+	<div
+		class="animate--on-visibility relative mb-16 grid"
+		data-animationclass="animate__slideInUp"
+	>
 		<div class="backdrop"></div>
 		<ul role="list" class="partner-list">
 			{
