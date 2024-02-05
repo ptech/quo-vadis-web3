@@ -4,9 +4,9 @@ import StyledButton from './StyledButton.astro'
 
 <div class="h-screen h-svh">
 	<video
+		id="video-hero"
 		class="absolute h-full w-full object-cover"
 		src={import.meta.env.BASE_URL + 'media/videos/hero.mp4'}
-		loop
 		muted
 		autoplay
 		playsinline></video>
@@ -106,3 +106,14 @@ import StyledButton from './StyledButton.astro'
 		}
 	}
 </style>
+
+<script>
+	const video = document.getElementById('video-hero') as HTMLVideoElement
+
+	if (video) {
+		video.onended = () => {
+			video.currentTime = video.duration - 1
+			video.play()
+		}
+	}
+</script>
