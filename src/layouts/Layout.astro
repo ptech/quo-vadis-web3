@@ -32,38 +32,24 @@ const { title } = Astro.props
 </html>
 
 <style is:global>
-	@font-face {
-		font-family: 'Poppins-Bold';
-		src: url('/fonts/Poppins-Bold.ttf') format('truetype');
-		font-weight: normal;
-		font-style: normal;
-		font-display: swap;
-	}
-	@font-face {
-		font-family: 'OpenSans-Regular';
-		src: url('/fonts/OpenSans-Regular.ttf') format('truetype');
-		font-weight: normal;
-		font-style: normal;
-		font-display: swap;
-	}
 	:root {
 		--nav-height: 89px;
 		--footer-height: 220px;
 		--main-bg-color: #13111a;
 	}
 	html {
-		font-family: 'OpenSans-Regular', sans-serif;
+		font-family: system-ui, sans-serif;
 		background-color: var(--main-bg-color);
 	}
 	main {
 		display: flex;
 		flex-direction: column;
-		width: 100vw;
+		width: 100%;
 	}
 	h1,
 	h2,
 	h3 {
-		font-family: 'Poppins-Bold', sans-serif;
+		font-weight: 600;
 	}
 	.animate--on-visibility {
 		transition: visibility 0.3s ease-in-out;

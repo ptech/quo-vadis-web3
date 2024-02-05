@@ -5,7 +5,7 @@ import counters from '../content/counters.json'
 <div
 	class="relative mx-auto flex w-full max-w-5xl flex-col gap-y-8 px-6 py-10 text-white sm:gap-y-16 sm:px-20 sm:py-24"
 >
-	<div class="lottie-circle -z-1 absolute left-1/2 top-1/2 w-screen opacity-50">
+	<div class="lottie-circle -z-1 absolute left-1/2 top-1/2 opacity-50">
 		<dotlottie-player
 			autoplay
 			loop
@@ -61,6 +61,7 @@ import counters from '../content/counters.json'
 	.lottie-circle {
 		transform: translate3d(-50%, -50%, 0);
 		z-index: -1;
+		width: calc(100vw - 2rem);
 		max-width: 1720px;
 	}
 
@@ -91,7 +92,7 @@ import counters from '../content/counters.json'
 
 		.text-content {
 			text-align: center;
-			font-family: Poppins-Bold;
+			font-weight: 600;
 			line-height: normal;
 
 			.counter {

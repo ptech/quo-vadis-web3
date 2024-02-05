@@ -20,7 +20,7 @@ const shuffledBoard = shuffleArray(board).map((value, index) => ({
 }))
 ---
 
-<div class="relative overflow-x-hidden px-6 py-44 lg:px-20">
+<div class="relative overflow-y-hidden px-6 py-44 lg:px-20">
 	<div class="ellipse"></div>
 	<div class="ellipse ellipse-2"></div>
 	<div class="ellipse ellipse-3"></div>
@@ -86,10 +86,6 @@ const shuffledBoard = shuffleArray(board).map((value, index) => ({
 			right: 125px;
 			background: rgba(115, 83, 229, 0.4);
 		}
-	}
-
-	h3 {
-		font-family: inherit;
 	}
 
 	.board-item {
