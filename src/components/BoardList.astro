@@ -8,15 +8,15 @@ const shuffleArray = <T,>(array: T[]) => {
 		.map(({ value }) => value)
 }
 
-const totalAvatars = 18
-const numbers = Array.from({ length: totalAvatars }, (_, index) => index + 1)
+const totalSymbols = 18
+const numbers = Array.from({ length: totalSymbols }, (_, index) => index + 1)
 
 const shuffledNumbers = shuffleArray(numbers)
 const shuffledBoard = shuffleArray(board).map((value, index) => ({
 	...value,
 	avatar:
 		import.meta.env.BASE_URL +
-		`media/lottie-files/avatars/${shuffledNumbers[index % totalAvatars]}.lottie`,
+		`media/lottie-files/symbols/${shuffledNumbers[index % totalSymbols]}.lottie`,
 }))
 ---
 
