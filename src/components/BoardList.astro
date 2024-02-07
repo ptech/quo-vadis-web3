@@ -1,23 +1,5 @@
 ---
 import board from '../content/board.json'
-
-const shuffleArray = <T,>(array: T[]) => {
-	return array
-		.map((value) => ({ value, sort: Math.random() }))
-		.sort((a, b) => a.sort - b.sort)
-		.map(({ value }) => value)
-}
-
-const totalSymbols = 18
-const numbers = Array.from({ length: totalSymbols }, (_, index) => index + 1)
-
-const shuffledNumbers = shuffleArray(numbers)
-const shuffledBoard = shuffleArray(board).map((value, index) => ({
-	...value,
-	avatar:
-		import.meta.env.BASE_URL +
-		`media/lottie-files/symbols/${shuffledNumbers[index % totalSymbols]}.lottie`,
-}))
 ---
 
 <div class="relative overflow-y-hidden px-6 py-44 lg:px-20">
@@ -29,9 +11,9 @@ const shuffledBoard = shuffleArray(board).map((value, index) => ({
 		<h2 class="mb-9 text-3xl font-bold tracking-tight text-white sm:text-4xl">
 			Editorial Board
 		</h2>
-		<ul role="list" class="flex flex-wrap justify-center gap-x-4 gap-y-9">
+		<ul id="board-list" role="list" class="flex flex-wrap justify-center gap-x-4 gap-y-9">
 			{
-				shuffledBoard.map((person) => (
+				board.map((person) => (
 					<li class={`board-item text-white${person.linkedin ? ' link-scale' : ''}`}>
 						<a href={person.linkedin} target="_blank">
 							<div
@@ -44,7 +26,6 @@ const shuffledBoard = shuffleArray(board).map((value, index) => ({
 										autoplay
 										loop
 										playMode="bounce"
-										src={person.avatar}
 									/>
 									<h3 class="text-base tracking-tight">{person.name}</h3>
 									<p class="text-xs opacity-50">{person.company}</p>
@@ -132,3 +113,32 @@ const shuffledBoard = shuffleArray(board).map((value, index) => ({
 		scale: 1.4;
 	}
 </style>
+
+<script>
+	const list = document.getElementById('board-list')
+
+	if (list) {
+		const shuffleArray = <T,>(array: T[]) => {
+			return array
+				.map((value) => ({ value, sort: Math.random() }))
+				.sort((a, b) => a.sort - b.sort)
+				.map(({ value }) => value)
+		}
+
+		const totalSymbols = 18
+		const numbers = Array.from({ length: totalSymbols }, (_, index) => index + 1)
+		const shuffledNumbers = shuffleArray(numbers)
+
+		const children = Array.from(list.children)
+		const shuffledChildren = shuffleArray(children)
+		shuffledChildren.forEach((node, index) => {
+			list.appendChild(node)
+
+			const player: any = node.getElementsByTagName('dotlottie-player')[0]
+
+			player.load(
+				`${import.meta.env.BASE_URL}media/lottie-files/symbols/${shuffledNumbers[index % totalSymbols]}.lottie`,
+			)
+		})
+	}
+</script>
