@@ -23,47 +23,38 @@ const { title } = Astro.props
 		></script>
 		<script
 			type="module"
-			src="https://unpkg.com/@dotlottie/player-component@2.3.0/dist/dotlottie-player.mjs"
+			src="https://unpkg.com/@dotlottie/player-component@2.7.8/dist/dotlottie-player.mjs"
 		></script>
 	</head>
-	<body>
+	<body class="relative">
 		<slot />
+		<dotlottie-player
+			role="presentation"
+			class="floating-symbol"
+			id="floating-symbol"
+			playMode="bounce"></dotlottie-player>
 	</body>
 </html>
 
 <style is:global>
-	@font-face {
-		font-family: 'Poppins-Bold';
-		src: url('/fonts/Poppins-Bold.ttf') format('truetype');
-		font-weight: normal;
-		font-style: normal;
-		font-display: swap;
-	}
-	@font-face {
-		font-family: 'OpenSans-Regular';
-		src: url('/fonts/OpenSans-Regular.ttf') format('truetype');
-		font-weight: normal;
-		font-style: normal;
-		font-display: swap;
-	}
 	:root {
 		--nav-height: 89px;
 		--footer-height: 220px;
 		--main-bg-color: #13111a;
 	}
 	html {
-		font-family: 'OpenSans-Regular', sans-serif;
+		font-family: system-ui, sans-serif;
 		background-color: var(--main-bg-color);
 	}
 	main {
 		display: flex;
 		flex-direction: column;
-		width: 100vw;
+		width: 100%;
 	}
 	h1,
 	h2,
 	h3 {
-		font-family: 'Poppins-Bold', sans-serif;
+		font-weight: 600;
 	}
 	.animate--on-visibility {
 		transition: visibility 0.3s ease-in-out;
@@ -92,6 +83,16 @@ const { title } = Astro.props
 
 	.noscroll {
 		overflow: hidden;
+	}
+
+	.floating-symbol {
+		position: absolute;
+		height: min(35vw, 375px);
+		width: min(35vw, 375px);
+		opacity: 0.05;
+		top: calc(-1 * min(35vw, 375px));
+		left: calc(-1 * min(35vw, 375px));
+		pointer-events: none;
 	}
 </style>
 
@@ -131,4 +132,64 @@ const { title } = Astro.props
 			observer.observe(elementsAnimatedOnVisibility[i])
 		}
 	})
+
+	const floatingSymbolHandling = () => {
+		const floating: any = document.getElementById('floating-symbol')
+
+		if (!floating) {
+			return
+		}
+
+		const getRandom = (min: number, max: number) =>
+			Math.floor(Math.random() * (max - min + 1)) + min
+
+		const loadNewSymbol = () => {
+			const totalSymbols = 18
+
+			floating.load(
+				import.meta.env.BASE_URL +
+					`media/lottie-files/symbols/${getRandom(1, totalSymbols)}.lottie`,
+			)
+		}
+
+		loadNewSymbol()
+
+		let complete = false
+
+		// Force play because player stops when out of viewport and it doesn't fire freeze event
+		setInterval(() => {
+			floating.play()
+		}, 2500)
+
+		floating?.addEventListener('complete', () => {
+			if (!complete) {
+				complete = true
+
+				loadNewSymbol()
+			}
+		})
+		floating?.addEventListener('ready', () => {
+			complete = false
+
+			const playerDimensions = floating.getBoundingClientRect()
+
+			const viewportTop = window.scrollY
+			const viewportBottom = window.scrollY + window.innerHeight
+
+			const newTop = getRandom(viewportTop, viewportBottom - playerDimensions.width)
+			const newLeftPercentage = getRandom(0, 100)
+
+			if (newLeftPercentage >= 50) {
+				floating.style.right = `${newLeftPercentage - 50}%`
+				floating.style.left = 'auto'
+			} else {
+				floating.style.right = 'auto'
+				floating.style.left = `${newLeftPercentage}%`
+			}
+
+			floating.style.top = `${(newTop / document.body.scrollHeight) * 100}%`
+		})
+	}
+
+	window.addEventListener('load', floatingSymbolHandling)
 </script>
