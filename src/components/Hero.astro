@@ -9,6 +9,7 @@ import StyledButton from './StyledButton.astro'
 		src={import.meta.env.BASE_URL + 'media/videos/hero.mp4'}
 		muted
 		autoplay
+		loop
 		playsinline></video>
 	<div class="ellipse ellipse-1"></div>
 	<div class="ellipse ellipse-2"></div>
@@ -109,12 +110,7 @@ import StyledButton from './StyledButton.astro'
 	const video = document.getElementById('video-hero') as HTMLVideoElement
 
 	if (video) {
-		video.onended = () => {
-			video.currentTime = video.duration - 0.1
-			video.play()
-		}
-
-		const addAnimation = () => {
+		const addAnimationToElement = () => {
 			const text = document.getElementById('hero-to-animate')
 
 			if (!text) {
@@ -132,12 +128,12 @@ import StyledButton from './StyledButton.astro'
 
 				video.removeEventListener('timeupdate', timeUpdateEvent)
 
-				addAnimation()
+				addAnimationToElement()
 			}
 
 			setTimeout(() => {
 				video.play().catch(() => {
-					addAnimation()
+					addAnimationToElement()
 				})
 			}, 3500)
 
