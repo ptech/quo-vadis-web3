@@ -5,11 +5,12 @@ import counters from '../content/counters.json'
 <div
 	class="relative mx-auto flex w-full max-w-5xl flex-col gap-y-8 px-6 py-10 text-white sm:gap-y-16 sm:px-20 sm:py-24"
 >
-	<div class="lottie-circle -z-1 absolute left-1/2 top-1/2 opacity-50">
+	<div class="lottie-circle -z-1 absolute left-1/2 top-1/2 overflow-hidden">
 		<dotlottie-player
 			autoplay
 			loop
 			mode="normal"
+			class="scale-125 opacity-50"
 			src={import.meta.env.BASE_URL + 'media/lottie-files/circles.lottie'}
 		>
 		</dotlottie-player>
