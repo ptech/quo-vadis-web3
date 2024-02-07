@@ -21,12 +21,7 @@ import board from '../content/board.json'
 								data-animationclass="animate__zoomIn"
 							>
 								<div class="card flex h-full flex-col items-center justify-center pb-4 text-center">
-									<dotlottie-player
-										class="lottie h-28"
-										autoplay
-										loop
-										playMode="bounce"
-									/>
+									<dotlottie-player class="lottie h-28" loop playMode="bounce" />
 									<h3 class="text-base tracking-tight">{person.name}</h3>
 									<p class="text-xs opacity-50">{person.company}</p>
 								</div>
@@ -131,6 +126,7 @@ import board from '../content/board.json'
 
 		const children = Array.from(list.children)
 		const shuffledChildren = shuffleArray(children)
+		let totalSymbolsToLoad = shuffledChildren.length
 		shuffledChildren.forEach((node, index) => {
 			list.appendChild(node)
 
@@ -139,6 +135,22 @@ import board from '../content/board.json'
 			player.load(
 				`${import.meta.env.BASE_URL}media/lottie-files/symbols/${shuffledNumbers[index % totalSymbols]}.lottie`,
 			)
+
+			const handleLoaded = () => {
+				totalSymbolsToLoad = totalSymbolsToLoad - 1
+
+				if (totalSymbolsToLoad <= 0) {
+					shuffledChildren.forEach((node) => {
+						const player: any = node.getElementsByTagName('dotlottie-player')[0]
+
+						player.play()
+					})
+				}
+
+				player.removeEventListener('ready', handleLoaded)
+			}
+
+			player.addEventListener('ready', handleLoaded)
 		})
 	}
 </script>
