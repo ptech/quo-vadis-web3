@@ -110,7 +110,7 @@ import StyledButton from './StyledButton.astro'
 	const video = document.getElementById('video-hero') as HTMLVideoElement
 
 	if (video) {
-		const addAnimationToElement = () => {
+		const addAnimationToCTA = () => {
 			const text = document.getElementById('hero-to-animate')
 
 			if (!text) {
@@ -128,12 +128,12 @@ import StyledButton from './StyledButton.astro'
 
 				video.removeEventListener('timeupdate', timeUpdateEvent)
 
-				addAnimationToElement()
+				addAnimationToCTA()
 			}
 
 			setTimeout(() => {
 				video.play().catch(() => {
-					addAnimationToElement()
+					addAnimationToCTA()
 				})
 			}, 3500)
 
