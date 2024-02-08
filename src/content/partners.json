@@ -304,5 +304,17 @@
     "logo": "dope.jpeg",
     "category": "Main Partner",
     "website": "https://www.dopegames.tv/"
+  },
+  {
+    "name": "Hermes Protocol",
+    "logo": "hermes-protocol.jpeg",
+    "category": "Institutional Partner",
+    "website": "https://hermesprotocol.io/"
+  },
+  {
+    "name": "Momentum One",
+    "logo": "momentum-one.jpeg",
+    "category": "Institutional Partner",
+    "website": "https://momentum-one.io/"
   }
 ]
