@@ -17,12 +17,13 @@ import counters from '../content/counters.json'
 	</div>
 	<div class="ellipse"></div>
 	<h2 class="text-center text-3xl font-bold sm:text-4xl">Explore our data</h2>
-	<div class="flex flex-col gap-16 sm:flex-row sm:gap-6 md:gap-16">
+	<div class="mx-8 flex flex-col gap-16 sm:mx-0 sm:flex-row sm:gap-6 md:gap-16">
 		<div class="animate--on-visibility flex-1" data-animationclass="animate__slideInUp">
 			<div class="scale">
 				<div class="rectangle"></div>
 				<div class="card btn--open-modal-blockSurvey flex-1">
 					<dotlottie-player
+						class="h-44 w-44 grow sm:h-auto sm:w-auto"
 						autoplay
 						loop
 						mode="normal"
@@ -42,6 +43,7 @@ import counters from '../content/counters.json'
 				<div class="rectangle"></div>
 				<div class="card btn--open-modal-kumu flex-1">
 					<dotlottie-player
+						class="h-44 w-44 grow sm:h-auto sm:w-auto"
 						autoplay
 						loop
 						mode="normal"
@@ -84,7 +86,7 @@ import counters from '../content/counters.json'
 		flex-direction: column;
 		align-items: center;
 		cursor: pointer;
-		padding: 24px 64px;
+		padding: 24px;
 		border-radius: 25px;
 		border: 3px solid transparent;
 		background:
