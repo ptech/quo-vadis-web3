@@ -21,7 +21,10 @@ import counters from '../content/counters.json'
 		<div class="animate--on-visibility flex-1" data-animationclass="animate__slideInUp">
 			<div class="scale">
 				<div class="rectangle"></div>
-				<div class="card btn--open-modal-blockSurvey flex-1">
+				<button
+					class="card flex-1"
+					data-open-modal-iframe="https://blocksurvey.io/public/report/1BoK72fdsEFvc6bvkHLjVubuC3wCBUQwXW/4cf5a18d-963e-420d-9187-6bd9a740f79b"
+				>
 					<dotlottie-player
 						class="h-44 w-44 grow sm:h-auto sm:w-auto"
 						autoplay
@@ -34,14 +37,17 @@ import counters from '../content/counters.json'
 						<p class="counter" data-target={counters?.web3SurveyRespondents}>0</p>
 						<p>Web3 Survey Respondents</p>
 					</div>
-				</div>
+				</button>
 			</div>
 		</div>
 
 		<div class="animate--on-visibility flex-1" data-animationclass="animate__slideInUp">
 			<div class="scale">
 				<div class="rectangle"></div>
-				<div class="card btn--open-modal-kumu flex-1">
+				<button
+					class="card flex-1"
+					data-open-modal-iframe="https://embed.kumu.io/30f50ff4597571666f8c59cdff638132"
+				>
 					<dotlottie-player
 						class="h-44 w-44 grow sm:h-auto sm:w-auto"
 						autoplay
@@ -54,7 +60,7 @@ import counters from '../content/counters.json'
 						<p class="counter" data-target={counters?.web3EcosystemNumbers}>0</p>
 						<p>Web3 Ecosystem Numbers</p>
 					</div>
-				</div>
+				</button>
 			</div>
 		</div>
 	</div>
@@ -79,6 +85,7 @@ import counters from '../content/counters.json'
 		filter: blur(100px);
 		right: 0;
 		background: rgba(206, 77, 164, 0.4);
+		pointer-events: none;
 	}
 
 	.card {

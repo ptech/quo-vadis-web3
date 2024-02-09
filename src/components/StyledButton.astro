@@ -2,12 +2,13 @@
 interface Props {
 	bright?: boolean
 	large?: boolean
+	class?: string
 }
 
-const { bright, large } = Astro.props
+const { bright, large, class: className, ...rest } = Astro.props
 ---
 
-<button class:list={['btn', { 'btn-bright': bright }, { 'btn-large': large }]}>
+<button class:list={['btn', { 'btn-bright': bright }, { 'btn-large': large }, className]} {...rest}>
 	<slot />
 </button>
 
