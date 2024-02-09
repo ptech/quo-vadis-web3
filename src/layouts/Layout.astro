@@ -1,5 +1,6 @@
 ---
 import 'animate.css'
+import ModalIframe from '../components/ModalIframe.astro'
 
 interface Props {
 	title: string
@@ -28,11 +29,13 @@ const { title } = Astro.props
 	</head>
 	<body class="relative">
 		<slot />
+		<ModalIframe />
 		<dotlottie-player
-			role="presentation"
-			class="floating-symbol"
 			id="floating-symbol"
-			playMode="bounce"></dotlottie-player>
+			class="floating-symbol"
+			role="presentation"
+			playMode="bounce"
+			worker></dotlottie-player>
 	</body>
 </html>
 
@@ -104,7 +107,7 @@ const { title } = Astro.props
 		/** @type {String} */
 		rootMargin: '0px',
 		/** @type {Number} */
-		threshold: 0.2,
+		threshold: 0.05,
 	}
 
 	function intersectionCallback(intersectingEntries) {

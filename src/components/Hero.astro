@@ -9,6 +9,7 @@ import StyledButton from './StyledButton.astro'
 		src={import.meta.env.BASE_URL + 'media/videos/hero.mp4'}
 		muted
 		autoplay
+		loop
 		playsinline></video>
 	<div class="ellipse ellipse-1"></div>
 	<div class="ellipse ellipse-2"></div>
@@ -16,18 +17,15 @@ import StyledButton from './StyledButton.astro'
 		<div class="flex h-full items-center justify-center">
 			<div class="parallax__text container z-0 px-8">
 				<div id="hero-to-animate" class="opacity-0">
-					<h1 id="hero-to-animate2" class="">
+					<h1>
 						Cartography and Mapping<br />
 						<span class="gradient"> of the Web3 Ecosystem</span>
 					</h1>
-					<a
-						id="hero-to-animate3"
-						class="blocksurvey-share"
-						href="https://blocksurvey.io/quo-vadis-web3-v5-lyrR1x.wRMaKE1LU0gr_yg?v=o"
-						target="_blank"
+					<StyledButton
+						data-open-modal-iframe="https://blocksurvey.io/quo-vadis-web3-v5-lyrR1x.wRMaKE1LU0gr_yg?v=o"
 					>
-						<StyledButton>Take our Web3 Survey</StyledButton>
-					</a>
+						Take our Web3 Survey
+					</StyledButton>
 				</div>
 			</div>
 		</div>
@@ -70,6 +68,7 @@ import StyledButton from './StyledButton.astro'
 		flex-shrink: 0;
 		border-radius: 418px;
 		filter: blur(100px);
+		pointer-events: none;
 
 		&.ellipse-1 {
 			top: 137px;
@@ -109,12 +108,7 @@ import StyledButton from './StyledButton.astro'
 	const video = document.getElementById('video-hero') as HTMLVideoElement
 
 	if (video) {
-		video.onended = () => {
-			video.currentTime = video.duration - 0.1
-			video.play()
-		}
-
-		const addAnimation = () => {
+		const addAnimationToCTA = () => {
 			const text = document.getElementById('hero-to-animate')
 
 			if (!text) {
@@ -132,12 +126,12 @@ import StyledButton from './StyledButton.astro'
 
 				video.removeEventListener('timeupdate', timeUpdateEvent)
 
-				addAnimation()
+				addAnimationToCTA()
 			}
 
 			setTimeout(() => {
 				video.play().catch(() => {
-					addAnimation()
+					addAnimationToCTA()
 				})
 			}, 3500)
 

@@ -1,0 +1,159 @@
+---
+import Rectangle from './Rectangle.astro'
+---
+
+<>
+	<div id="overlay-modal" class="overlay inactive">
+		<img class="btn--close-modal" src=`${import.meta.env.BASE_URL}images/close.svg` />
+	</div>
+	<div id="modal" class="modal inactive">
+		<Rectangle />
+		<div id="modal-iframe" class="relative h-full overflow-hidden rounded-3xl"></div>
+	</div>
+
+	<style>
+		.modal,
+		.overlay {
+			transition: opacity 0.5s ease-in-out;
+			opacity: 1;
+
+			&.inactive {
+				opacity: 0;
+				height: 0;
+				overflow: hidden;
+				visibility: hidden;
+			}
+		}
+
+		.modal {
+			--margin: 40px;
+
+			position: fixed;
+			top: 0;
+			height: calc(100vh - 2 * var(--margin));
+			height: calc(100dvh - 2 * var(--margin));
+			width: calc(100vw - 2 * var(--margin));
+			width: calc(100dvw - 2 * var(--margin));
+			margin: var(--margin);
+			z-index: 20;
+
+			@media (min-width: 640px) {
+				--margin: 50px;
+			}
+		}
+
+		.overlay {
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5);
+			backdrop-filter: blur(3px);
+			z-index: 15;
+		}
+
+		.btn--close-modal {
+			@apply bg-gray-200;
+			position: absolute;
+			top: 8px;
+			right: 8px;
+			border-radius: 50%;
+			cursor: pointer;
+			width: 40px;
+
+			&:hover {
+				@apply bg-gray-400;
+			}
+		}
+	</style>
+
+	<script>
+		const modal = document.getElementById('modal')!
+		const overlay = document.getElementById('overlay-modal')!
+		const openModalBtns = document.querySelectorAll('[data-open-modal-iframe]')
+		const closeModalBtn = document.querySelector('.btn--close-modal')!
+		const iframeWrapper = document.getElementById('modal-iframe')!
+		const body = document.body
+
+		const closeModalEsc = (e: KeyboardEvent) => {
+			if (e.key === 'Escape' && !modal.classList.contains('inactive')) {
+				closeModal()
+			}
+		}
+
+		let iframe: HTMLIFrameElement
+
+		const openModal: EventListener = function (event) {
+			const url = (event.currentTarget as HTMLElement).dataset.openModalIframe
+
+			if (!url) {
+				return
+			}
+
+			modal.classList.remove('inactive')
+			overlay.classList.remove('inactive')
+			body.classList.add('noscroll')
+
+			const loadingElement: any = document.getElementById('iframe-loading')
+
+			if (!loadingElement) {
+				iframeWrapper.innerHTML = `
+					<dotlottie-player
+						id="iframe-loading"
+						class="absolute"
+						loop
+						autoplay
+						src="${import.meta.env.BASE_URL + 'media/lottie-files/loading.lottie'}"
+					>
+					</dotlottie-player>
+				`
+			} else {
+				loadingElement.play()
+			}
+
+			iframe = document.createElement('iframe')
+			iframe.src = url
+			iframe.style.height = '100%'
+			iframe.style.width = '100%'
+			iframe.frameBorder = '0'
+			iframe.marginHeight = '0'
+			iframe.marginWidth = '0'
+			iframe.classList.add('opacity-0')
+			iframe.onload = () => {
+				iframe.classList.add('animate__animated', 'animate__fadeIn')
+
+				const pauseLoadingAnimation = () => {
+					loadingElement.pause()
+
+					iframe.removeEventListener('animationend', pauseLoadingAnimation)
+				}
+
+				iframe.addEventListener('animationend', pauseLoadingAnimation)
+			}
+
+			iframeWrapper.appendChild(iframe)
+
+			document.addEventListener('keydown', closeModalEsc)
+		}
+
+		const closeModal = function () {
+			modal.classList.add('inactive')
+			overlay.classList.add('inactive')
+			body.classList.remove('noscroll')
+
+			iframe.remove()
+
+			const loadingElement: any = document.getElementById('iframe-loading')
+			loadingElement?.pause()
+
+			document.removeEventListener('keydown', closeModalEsc)
+		}
+
+		openModalBtns.forEach((openBtn) => openBtn.addEventListener('click', openModal))
+		closeModalBtn.addEventListener('click', closeModal)
+		overlay.addEventListener('click', closeModal)
+	</script>
+</>

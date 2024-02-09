@@ -21,13 +21,12 @@ const { pathname } = Astro.url
 		}
 	</div>
 
-	<a
-		class="blocksurvey-share hidden lg:block"
-		href="https://blocksurvey.io/quo-vadis-web3-v5-lyrR1x.wRMaKE1LU0gr_yg?v=o"
-		target="_blank"
+	<StyledButton
+		class="hidden lg:block"
+		data-open-modal-iframe="https://blocksurvey.io/quo-vadis-web3-v5-lyrR1x.wRMaKE1LU0gr_yg?v=o"
 	>
-		<StyledButton>Take our Web3 Survey</StyledButton>
-	</a>
+		Take our Web3 Survey
+	</StyledButton>
 	<Burger />
 </nav>
 
