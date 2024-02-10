@@ -2,10 +2,10 @@
 import StyledButton from './StyledButton.astro'
 ---
 
-<div class="relative h-screen h-svh">
+<div class="relative">
 	<video
 		id="video-hero"
-		class="absolute h-full w-full object-cover"
+		class="h-screen h-svh w-full object-cover"
 		src={import.meta.env.BASE_URL + 'media/videos/hero.mp4'}
 		muted
 		autoplay
@@ -13,23 +13,22 @@ import StyledButton from './StyledButton.astro'
 		playsinline></video>
 	<div class="ellipse ellipse-1"></div>
 	<div class="ellipse ellipse-2"></div>
-	<div class="parallax h-full">
-		<div class="flex h-full items-center justify-center">
-			<div class="parallax__text container z-0 px-8">
-				<div id="hero-to-animate" class="opacity-0">
-					<h1>
-						Cartography and Mapping<br />
-						<span class="gradient"> of the Web3 Ecosystem</span>
-					</h1>
-					<StyledButton
-						data-open-modal-iframe="https://blocksurvey.io/quo-vadis-web3-v5-lyrR1x.wRMaKE1LU0gr_yg?v=o"
-					>
-						Take our Web3 Survey
-					</StyledButton>
-				</div>
+	<div id="hero-cta-section" class="parallax absolute top-0 h-full w-full">
+		<div id="hero-cta" class="parallax__text cta-container sticky z-0 h-screen h-svh px-8">
+			<div id="hero-to-animate" class="opacity-0">
+				<h1>
+					Cartography and Mapping<br />
+					<span class="gradient"> of the Web3 Ecosystem</span>
+				</h1>
+				<StyledButton
+					data-open-modal-iframe="https://blocksurvey.io/quo-vadis-web3-v5-lyrR1x.wRMaKE1LU0gr_yg?v=o"
+				>
+					Take our Web3 Survey
+				</StyledButton>
 			</div>
 		</div>
 	</div>
+	<div id="hero-empty-section" class="parallax h-screen h-svh"></div>
 </div>
 
 <style>
@@ -39,17 +38,29 @@ import StyledButton from './StyledButton.astro'
 		font-style: normal;
 		font-weight: 700;
 		line-height: 1.42;
-		margin: -70px 0 24px;
+		margin-bottom: 24px;
 
 		@media (min-width: 640px) {
 			font-size: 3.75rem;
 		}
 	}
 
-	.container {
+	.cta-container {
 		text-align: center;
-		margin-top: 7vh;
-		margin-top: 7svh;
+		/* transition: all 1s linear; */
+		margin-top: 100vh;
+		margin-top: 100svh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&.sticky {
+			position: sticky;
+			top: 0;
+			/* bottom: 50%; */
+			/* transform: translate3d(0, -50%, 0); */
+			margin-top: 0;
+		}
 	}
 
 	.gradient {
@@ -90,11 +101,12 @@ import StyledButton from './StyledButton.astro'
 			grid-area: stack;
 			animation: parallax linear;
 			animation-timeline: scroll();
+			animation-range-start: cover 100svh;
 		}
 	}
 
 	.parallax__text {
-		--parallax-speed: -10;
+		--parallax-speed: 5;
 	}
 
 	@keyframes parallax {
@@ -105,39 +117,130 @@ import StyledButton from './StyledButton.astro'
 </style>
 
 <script>
-	const video = document.getElementById('video-hero') as HTMLVideoElement
+	const video = document.getElementById('video-hero')! as HTMLVideoElement
+	const emptySection = document.getElementById('hero-empty-section')!
+	const ctaSection = document.getElementById('hero-cta-section')!
+	const text = document.getElementById('hero-to-animate')!
+	const cta = document.getElementById('hero-cta')!
 
-	if (video) {
-		const addAnimationToCTA = () => {
-			const text = document.getElementById('hero-to-animate')
-
-			if (!text) {
-				return
-			}
-
-			text.classList.add('animate__animated', 'animate__fadeIn')
-		}
-
-		const animateTextFromVideoTime = () => {
-			const timeUpdateEvent: EventListener = (event) => {
-				if (video.currentTime < 11.3) {
-					return
-				}
-
-				video.removeEventListener('timeupdate', timeUpdateEvent)
-
-				addAnimationToCTA()
-			}
-
-			setTimeout(() => {
-				video.play().catch(() => {
-					addAnimationToCTA()
-				})
-			}, 3500)
-
-			video.addEventListener('timeupdate', timeUpdateEvent)
-		}
-
-		animateTextFromVideoTime()
+	const fadeInCta = () => {
+		text.classList.add('animate__animated', 'animate__fadeIn')
 	}
+
+	const unstickCta = () => {
+		cta.classList.remove('sticky')
+	}
+
+	let timeoutAfterFadeIn: number | undefined
+	let timeoutCheckVideoIsPlayable: number | undefined
+	const unsubscribeVideoEvents = () => {
+		clearTimeout(timeoutAfterFadeIn)
+		clearTimeout(timeoutCheckVideoIsPlayable)
+		video.removeEventListener('timeupdate', timeUpdateEvent)
+	}
+
+	const unsubscribeAll = () => {
+		unsubscribeVideoEvents()
+		observerScrollToEnd.disconnect()
+		observerPassedSection.disconnect()
+		observerInCtaSection.disconnect()
+	}
+
+	const intersectionScrollEndCallback: IntersectionObserverCallback = (intersectingEntries) => {
+		if (intersectingEntries[0].intersectionRatio < 1) {
+			return
+		}
+
+		unsubscribeAll()
+		fadeInCta()
+		unstickCta()
+	}
+	const observerScrollToEnd = new IntersectionObserver(intersectionScrollEndCallback, {
+		rootMargin: '0px',
+		threshold: 1,
+	})
+	observerScrollToEnd.observe(emptySection)
+
+	let passedSectionIsIntersecting: boolean | undefined
+	const intersectionPassedSectionCallback: IntersectionObserverCallback = (
+		intersectingEntries,
+	) => {
+		if (passedSectionIsIntersecting === undefined) {
+			passedSectionIsIntersecting = intersectingEntries[0].isIntersecting
+
+			if (
+				!intersectingEntries[0].isIntersecting &&
+				intersectingEntries[0].intersectionRatio <= 0.15
+			) {
+				unsubscribeVideoEvents()
+			}
+
+			return
+		}
+
+		if (passedSectionIsIntersecting === intersectingEntries[0].isIntersecting) {
+			return
+		}
+
+		unsubscribeAll()
+		fadeInCta()
+		unstickCta()
+	}
+	const observerPassedSection = new IntersectionObserver(intersectionPassedSectionCallback, {
+		rootMargin: '0px',
+		threshold: 0.5,
+	})
+	observerPassedSection.observe(ctaSection)
+
+	const intersectionGoBackSectionCallback: IntersectionObserverCallback = (
+		intersectingEntries,
+	) => {
+		if (!intersectingEntries[0].isIntersecting) {
+			return
+		}
+
+		unsubscribeAll()
+		fadeInCta()
+		unstickCta()
+	}
+	const observerInCtaSection = new IntersectionObserver(intersectionGoBackSectionCallback, {
+		rootMargin: '0px',
+		threshold: 0.45,
+	})
+	observerInCtaSection.observe(emptySection)
+
+	const scrollToCTASection = (waitVideoTimeToScroll: boolean) => {
+		fadeInCta()
+
+		const doScroll = () => {
+			observerInCtaSection.disconnect()
+			emptySection.scrollIntoView({ behavior: 'smooth' })
+		}
+
+		if (waitVideoTimeToScroll) {
+			timeoutAfterFadeIn = setTimeout(doScroll, 450)
+		} else {
+			doScroll()
+		}
+	}
+
+	const timeUpdateEvent: EventListener = (event) => {
+		if (video.currentTime < 11.3) {
+			return
+		}
+
+		video.removeEventListener('timeupdate', timeUpdateEvent)
+
+		scrollToCTASection(true)
+	}
+
+	timeoutCheckVideoIsPlayable = setTimeout(() => {
+		video.play().catch(() => {
+			scrollToCTASection(false)
+
+			video.removeEventListener('timeupdate', timeUpdateEvent)
+		})
+	}, 3500)
+
+	video.addEventListener('timeupdate', timeUpdateEvent)
 </script>
