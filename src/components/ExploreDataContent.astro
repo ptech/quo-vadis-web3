@@ -16,31 +16,9 @@ import counters from '../content/counters.json'
 		</dotlottie-player>
 	</div>
 	<div class="ellipse"></div>
-	<h2 class="text-center text-3xl font-bold sm:text-4xl">Explore our data</h2>
+	<h2 class="text-center text-3xl font-bold sm:text-4xl">Start exploring our data now</h2>
 	<div class="mx-8 flex flex-col gap-16 sm:mx-0 sm:flex-row sm:gap-6 md:gap-16">
-		<div class="animate--on-visibility flex-1" data-animationclass="animate__slideInUp">
-			<div class="scale">
-				<div class="rectangle"></div>
-				<button
-					class="card flex-1"
-					data-open-modal-iframe="https://blocksurvey.io/public/report/85288ed8-e1e2-45e2-9d04-5e83e946246c"
-				>
-					<dotlottie-player
-						class="h-44 w-44 grow sm:h-auto sm:w-auto"
-						autoplay
-						loop
-						mode="normal"
-						src={import.meta.env.BASE_URL + 'media/lottie-files/bar-chart.lottie'}
-					>
-					</dotlottie-player>
-					<div class="text-content">
-						<p class="counter" data-target={counters?.web3SurveyRespondents}>0</p>
-						<p>Click to see the survey Web3 Verticals</p>
-					</div>
-				</button>
-			</div>
-		</div>
-
+		
 		<div class="animate--on-visibility flex-1" data-animationclass="animate__slideInUp">
 			<div class="scale">
 				<div class="rectangle"></div>
@@ -58,7 +36,7 @@ import counters from '../content/counters.json'
 					</dotlottie-player>
 					<div class="text-content">
 						<p class="counter" data-target={counters?.web3EcosystemNumbers}>0</p>
-						<p>Click to visualize the Portuguese Web3 Ecosystem</p>
+						<p>Check our Day 1 Snapshot of the Portuguese Web3 Ecosystem</p>
 					</div>
 				</button>
 			</div>
