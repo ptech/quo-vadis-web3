@@ -1,7 +1,7 @@
 [
   {
     "name": "Antas da Cunha",
-    "logo": "antas-ca-cunha.jpg",
+    "logo": "Antas da Cunha.png",
     "category": "Main Partner",
     "website": "https://adcecija.pt/"
   },
@@ -25,7 +25,7 @@
   },
   {
     "name": "Mercado Bitcoin Portugal",
-    "logo": "mercado-btc-portugal.png",
+    "logo": "Mercado Bitcoin Portugal.svg",
     "category": "Main Partner",
     "website": "https://mercadobitcoin.pt/"
   },
@@ -124,7 +124,7 @@
   },
   {
     "name": "Start Up Portugal",
-    "logo": "startup-portugal.png",
+    "logo": "Startup Portugal.svg",
     "category": "Institutional Partner",
     "website": "https://startupportugal.com/pt/"
   },
@@ -154,7 +154,7 @@
   },
   {
     "name": "LisPolis",
-    "logo": "lispolis.png",
+    "logo": "LISPOLIS.png",
     "category": "Institutional Partner",
     "website": "https://www.lispolis.pt/"
   },
@@ -182,7 +182,7 @@
   },
   {
     "name": "Poolside",
-    "logo": "poolside.jpeg",
+    "logo": "Poolside.png",
     "category": "Institutional Partner",
     "website": "https://www.poolside.co/hub"
   },
@@ -253,7 +253,7 @@
   },
   {
     "name": "Algorithm G",
-    "logo": "algorithm-g.jpeg",
+    "logo": "Logo_Algorithm_G.png",
     "category": "Institutional Partner",
     "website": "https://www.algorithmg.xyz"
   },
@@ -322,5 +322,29 @@
     "logo": "bloq4u.png",
     "category": "Main Partner",
     "website": "https://bloq4u.com"
+  },
+    {
+    "name": "Privus",
+    "logo": "Privus.svg",
+    "category": "Institutional Partner",
+    "website": "https://privus.io/"
+  },
+    {
+    "name": "SkyUnicorn",
+    "logo": "SkyUnicorn.svg",
+    "category": "Institutional Partner",
+    "website": "https://www.skyunicorn.io/"
+  },
+    {
+    "name": "APDC",
+    "logo": "APDC.jpg",
+    "category": "Institutional Partner",
+    "website": "https://www.apdc.pt/"
+  },
+    {
+    "name": "Starup Madeira",
+    "logo": "Startup Madeira.png",
+    "category": "Institutional Partner",
+    "website": "https://startupmadeira.eu/"
   }
 ]
