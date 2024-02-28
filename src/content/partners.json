@@ -316,5 +316,11 @@
     "logo": "momentum-one.jpeg",
     "category": "Institutional Partner",
     "website": "https://momentum-one.io/"
+  },
+    {
+    "name": "Bloq4u",
+    "logo": "bloq4u.png",
+    "category": "Main Partner",
+    "website": "https://bloq4u.com"
   }
 ]
