@@ -1,7 +1,7 @@
 [
   {
     "name": "Antas da Cunha",
-    "logo": "antas-ca-cunha.jpg",
+    "logo": "antas-da-cunha.png",
     "category": "Main Partner",
     "website": "https://adcecija.pt/"
   },
@@ -25,7 +25,7 @@
   },
   {
     "name": "Mercado Bitcoin Portugal",
-    "logo": "mercado-btc-portugal.png",
+    "logo": "mercado-bitcoin-portugal.svg",
     "category": "Main Partner",
     "website": "https://mercadobitcoin.pt/"
   },
@@ -124,7 +124,7 @@
   },
   {
     "name": "Start Up Portugal",
-    "logo": "startup-portugal.png",
+    "logo": "startup-portugal.svg",
     "category": "Institutional Partner",
     "website": "https://startupportugal.com/pt/"
   },
@@ -136,7 +136,7 @@
   },
   {
     "name": "Start Up Sintra",
-    "logo": "startup-sintra.jpeg",
+    "logo": "startup-sintra.jpg",
     "category": "Institutional Partner",
     "website": "https://startupsintra.com/"
   },
@@ -182,7 +182,7 @@
   },
   {
     "name": "Poolside",
-    "logo": "poolside.jpeg",
+    "logo": "poolside.png",
     "category": "Institutional Partner",
     "website": "https://www.poolside.co/hub"
   },
@@ -223,7 +223,7 @@
   },
   {
     "name": "genesis.studio",
-    "logo": "genesis-studio.jpeg",
+    "logo": "genesis.studio.svg",
     "category": "Main Partner",
     "website": "https://genesis.studio/"
   },
@@ -253,7 +253,7 @@
   },
   {
     "name": "Algorithm G",
-    "logo": "algorithm-g.jpeg",
+    "logo": "algorithm-g.png",
     "category": "Institutional Partner",
     "website": "https://www.algorithmg.xyz"
   },
@@ -322,5 +322,29 @@
     "logo": "bloq4u.png",
     "category": "Main Partner",
     "website": "https://bloq4u.com"
+  },
+    {
+    "name": "Privus",
+    "logo": "privus.svg",
+    "category": "Institutional Partner",
+    "website": "https://privus.io/"
+  },
+    {
+    "name": "SkyUnicorn",
+    "logo": "skyunicorn.svg",
+    "category": "Institutional Partner",
+    "website": "https://www.skyunicorn.io/"
+  },
+    {
+    "name": "APDC",
+    "logo": "apdc.jpg",
+    "category": "Institutional Partner",
+    "website": "https://www.apdc.pt/"
+  },
+    {
+    "name": "Starup Madeira",
+    "logo": "startup-madeira.png",
+    "category": "Institutional Partner",
+    "website": "https://startupmadeira.eu/"
   }
 ]
